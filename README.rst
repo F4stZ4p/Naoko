@@ -2,7 +2,7 @@
 
     <h1 align="center">Naoko - The Discord Bot</h1>
     <p align="center">
-        <a href="https://naokobot.github.io"><img width="100" src="https://i.imgur.com/T8zG9xY.png"/></a>
+        <a href="https://naokobot.github.io"><img width="250" src="https://i.imgur.com/T8zG9xY.png"/></a>
     </p>
     
     <h4>What is Naoko?</h4>
