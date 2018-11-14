@@ -1,0 +1,20 @@
+.. raw:: html
+
+    <h1 align="center">Naoko - The Discord Bot</h1>
+    <p align="center">
+        <a href="https://naokobot.github.io"><img width="100" src="https://i.imgur.com/T8zG9xY.png"/></a>
+    </p>
+    
+    <h4>What is Naoko?</h4>
+        <p>Naoko is a multifunctional Discord Bot made with discord.py@rewrite</p>
+
+    <h4>What are Naoko features?</h4>
+       <p> Naoko has a lot of them: </p>
+       <ul>
+           <li>Easy to use</li>
+           <li>A lot of commands</li>
+           <li>Music commands</li>
+           <li>Custom commands and more!</li>
+       </ul>
+       
+     <h4>Naoko is licensed work, copying and using code without permission is forbidden. Copyright (c) 2018 F4stZ4p</h4>
