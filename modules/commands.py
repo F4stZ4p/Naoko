@@ -163,7 +163,7 @@ class Commands():
     	"""
     	Shows my source code. Code is for educational purposes only
     	"""
-    	await ctx.send(embed=discord.Embed(title="Source Code", description="Source code is only for **educational** purposes\nLink can be found in **title**", url="https://github.com/F4stZ4p/Naoko", color=random.randint(0x000000, 0xFFFFFF)).set_thumbnail(url="https://i.imgur.com/46eHxTO.png"))
+    	await ctx.send(embed=discord.Embed(timestamp=ctx.message.created_at, title="Source Code", description="Source code is only for **educational** purposes\nLink can be found in **title**", url="https://github.com/F4stZ4p/Naoko", color=random.randint(0x000000, 0xFFFFFF)).set_thumbnail(url="https://i.imgur.com/46eHxTO.png").set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url))
 
 
 def setup(bot):
