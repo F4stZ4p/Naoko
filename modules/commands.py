@@ -157,5 +157,14 @@ class Commands():
         else:
             await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), title=f"Quote - @{m.author.name} said in #{ctx.channel.name}", description=m.clean_content if m.clean_content is not "" else "...", url=m.jump_url, timestamp=ctx.message.created_at).set_footer(icon_url=ctx.author.avatar_url, text=f"Quoted by {ctx.author.name}").set_thumbnail(url=m.author.avatar_url))
 
+    @commands.command()
+    @commands.cooldown(1.0, 5.0, commands.BucketType.user)
+    async def source(self, ctx):
+    	"""
+    	Shows my source code. Code is for educational purposes only
+    	"""
+    	await ctx.send(embed=discord.Embed(title="Source Code", description="Source code is only for **educational** purposes\nLink can be found in **title**", url="https://github.com/F4stZ4p/Naoko", color=random.randint(0x000000, 0xFFFFFF)).set_thumbnail(url="https://i.imgur.com/46eHxTO.png"))
+
+
 def setup(bot):
     bot.add_cog(Commands(bot))
