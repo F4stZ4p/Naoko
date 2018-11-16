@@ -17,9 +17,12 @@
            <li>Custom commands and more!</li>
        </ul>
        
-    <h4>Some statistics...</h4>
+    <h4>Some statistics...</h4> https://img.shields.io/pypi/pyversions/Django.svg
     <p align="left">
-        <a href="https://discord.io/naoko"> <img width="150" img heigth="100" src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/></a>
+        <a href="https://discord.io/naoko"> <img width="150" img heigth="100" src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/></a><a href="https://python.org> <img width="150" img heigth="100" src="https://img.shields.io/pypi/pyversion/Django.svg
+"/></a>
+    </p>
+
     </p>
     
     <p align="center">
