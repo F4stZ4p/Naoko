@@ -5,6 +5,28 @@
         <a href="https://naokobot.github.io"><img width="250" src="https://i.imgur.com/QYHafPM.png"/></a>
     </p>
     
+   <p align="center">
+
+
+        <br>
+        <br>
+        <a href="https://discord.io/naoko">
+            <img src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/>
+        </a>
+        <a href="https://python.org">
+            <img src="https://img.shields.io/pypi/pyversion/Django"/>
+        </a>
+
+
+
+
+
+
+
+ 
+
+    </p>
+    
     <h4>What is Naoko?</h4>
         <p>Naoko is a multifunctional Discord Bot made with discord.py@rewrite</p>
 
@@ -19,8 +41,8 @@
        
     <h4>Some statistics...</h4> https://img.shields.io/pypi/pyversions/Django.svg
     <p align="left">
-        <a href="https://discord.io/naoko"> <img width="150" img heigth="100" src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/></a>
-        <a href="https://python.org> <img width="150" img heigth="100" src="https://img.shields.io/pypi/pyversion/Django.svg
+        <a href="https://discord.io/naoko"> <img width="150" img heigth="100" src=""/></a>
+        <a href="https://python.org> <img width="150" img heigth="100" src="svg
         "/></a>
     </p>
 
