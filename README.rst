@@ -19,7 +19,7 @@
        
     <h4>Some statistics...</h4>
     <p align="left">
-        <a href="https://discord.io/naoko"> <img width="100" img heigth="50" src="https://img.shields.io/discord/443465258774822913.png?label=Support%20Guild&colorB=170041"/></a>
+        <a href="https://discord.io/naoko"> <img width="100" img heigth="50" src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=170041"/></a>
     </p>
     
     <p align="center">
