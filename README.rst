@@ -14,7 +14,7 @@
             <img src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/>
         </a>
         <a href="https://python.org">
-            <img src="https://img.shields.io/pypi/pyversion/Django"/>
+            <img src="https://img.shields.io/pypi/pyversion/Django.svg"/>
         </a>
 
 
