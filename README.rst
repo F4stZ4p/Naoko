@@ -8,8 +8,8 @@
    <p align="center">
 
 
-        <br>
-        <br>
+
+
         <a href="https://discord.io/naoko">
             <img src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/>
         </a>
@@ -46,10 +46,7 @@
 
 
     
-    <p align="center">
-        <a href="https://patreon.com/F4stZ4p"> <img width="100" src="https://i.imgur.com/3qk3C8h.png"/></a>
-    </p>
-    <p>Also you can support development of Naoko on Patreon and get cool features</p>
+
      
      
     <h4>Naoko is licensed work, copying and using code without permission is forbidden. Copyright (c) 2018 F4stZ4p</h4>
