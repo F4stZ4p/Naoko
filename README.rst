@@ -13,6 +13,9 @@
         <a href="https://discord.io/naoko">
             <img src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/>
         </a>
+        <a href="https://patreon.com/F4stZ4p">
+            <img src="https://img.shields.io/badge/Donate-on%20Patreon-F96854.svg"/>
+        </a>
         <a href="https://python.org">
             <img src="https://img.shields.io/pypi/pyversions/Django.svg"/>
         </a>
