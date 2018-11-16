@@ -17,9 +17,9 @@
            <li>Custom commands and more!</li>
        </ul>
        
-    <p>Some statistics...</p>
+    <h4>Some statistics...</h4>
     <p align="left">
-        <a href="https://discord.io/naoko" ><img width="20" src="https://img.shields.io/discord/443465258774822913.svg?label=Support Guild&colorB=170041" /></a>
+        <a href="https://discord.io/naoko"> src="https://img.shields.io/discord/443465258774822913.svg?label=Support Guild&colorB=170041"</a>
     
     
     <p align="center">
