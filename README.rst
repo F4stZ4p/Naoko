@@ -23,7 +23,7 @@
 
 
 
- 
+
 
     </p>
     
@@ -39,14 +39,9 @@
            <li>Custom commands and more!</li>
        </ul>
        
-    <h4>Some statistics...</h4> https://img.shields.io/pypi/pyversions/Django.svg
-    <p align="left">
-        <a href="https://discord.io/naoko"> <img width="150" img heigth="100" src=""/></a>
-        <a href="https://python.org> <img width="150" img heigth="100" src="svg
-        "/></a>
-    </p>
 
-    </p>
+
+
     
     <p align="center">
         <a href="https://patreon.com/F4stZ4p"> <img width="100" src="https://i.imgur.com/3qk3C8h.png"/></a>
