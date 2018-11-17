@@ -11,7 +11,7 @@ class Cloud():
 
     @commands.command()
     async def upload(self, ctx):
-        file = (await ctx.message.attachments[0].save(fp=BytesIO())).seek(0)
+        file = await ctx.message.attachments[0].save(fp=BytesIO())
         async with ctx.typing():
             async with self.bot.session.post(f"{self.server}/up", data={"file": file}) as r:
                 await ctx.send((await r.text()))
