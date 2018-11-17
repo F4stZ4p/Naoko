@@ -7,9 +7,6 @@
     
    <p align="center">
 
-
-
-
         <a href="https://discord.io/naoko">
             <img src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/>
         </a>
@@ -19,14 +16,6 @@
         <a href="https://python.org">
             <img src="https://img.shields.io/pypi/pyversions/Django.svg"/>
         </a>
-
-
-
-
-
-
-
-
 
     </p>
     
@@ -41,12 +30,5 @@
            <li>Music commands</li>
            <li>Custom commands and more!</li>
        </ul>
-       
 
-
-
-    
-
-     
-     
     <h4>Naoko is licensed work, copying and using code without permission is forbidden. Copyright (c) 2018 F4stZ4p</h4>
