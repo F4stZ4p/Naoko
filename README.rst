@@ -18,7 +18,7 @@
         </a>
 
     </p>
-    
+    <hr>
     <h4>What is Naoko?</h4>
         <p>Naoko is a multifunctional Discord Bot made with discord.py@rewrite</p>
 
