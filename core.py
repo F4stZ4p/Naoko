@@ -23,8 +23,8 @@ class Naoko(commands.AutoShardedBot):
         #self.lavalink.nodes.add(lavalink.Regions.all(), password="youshallnotpass", rest_port=2333, ws_port=80, host='')
 
         self.config = NaokoConfig()
-        self.blacklist = [344031555544547328]
-        self.whitelist = [340745895932854272]
+        self.blacklist = [entry for entry in self.config.blacklist]
+        self.whitelist = [entry for entry in self.config.whitelist]
         self.path = os.path.dirname(os.path.realpath(__file__))
         self.patrons = []
         self.launch_time = datetime.utcnow()
