@@ -52,8 +52,8 @@ class ImageModule:
     def do_drake_meme(drake_bytes: bytes, no: str, yes: str, path):
         with Image.open(BytesIO(drake_bytes)) as image:
             draw = ImageDraw.Draw(image)
-            draw.text((250, 20), fill(no if len(no) < 75 else no[:75], 10), (0, 0, 0), font=ImageFont.truetype(path, 40))
-            draw.text((250, 250), fill(yes if len(yes) < 75 else yes[:75], 10), (0, 0, 0), font=ImageFont.truetype(path, 40))
+            draw.text((250, 20), fill(no if len(no) < 65 else no[:65], 15), (0, 0, 0), font=ImageFont.truetype(path, 40))
+            draw.text((250, 250), fill(yes if len(yes) < 65 else yes[:65], 15), (0, 0, 0), font=ImageFont.truetype(path, 40))
             bytes_io = BytesIO()
             image.save(bytes_io, "png")
             bytes_io.seek(0)
