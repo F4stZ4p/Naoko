@@ -26,17 +26,6 @@ class Fun():
 
     @commands.command(pass_context=True)
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
-    async def emojitest(self, ctx):
-        """ Emoji test! """
-        myemojis = [e.id for e in self.bot.emojis]
-        myemojis = random.sample(myemojis, 20)
-        embed = discord.Embed(color=random.randint(0x000000, 0xFFFFFF), title="Emoji Test (may be NSFW)")
-        msg = await ctx.send(embed=embed)
-        for emoji in myemojis:
-            await msg.add_reaction(self.bot.get_emoji(emoji))
-
-    @commands.command(pass_context=True)
-    @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def color(self, ctx, user: discord.Member=None):
         """ Gives your or target's highest role colour """
         if user is None:
