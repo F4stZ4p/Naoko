@@ -1,7 +1,6 @@
 import traceback
 import sys
 from discord.ext import commands
-import Levenshtein as lv
 from datetime import timedelta
 import discord
 import random
@@ -17,8 +16,7 @@ class CommandErrorHandler:
             return
 
         if isinstance(error, commands.CommandNotFound):
-            await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at).add_field(name=f"**Invalid command entered. Did you mean:**", value=f"`{' | '.join(str(command) for command in self.bot.commands if lv.distance(ctx.invoked_with, command.name) < 4 and not command.hidden) or 'Sorry, no similar commands found'}`").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url), delete_after=10)
-
+            pass
         elif isinstance(error, commands.MissingRequiredArgument):
             await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at).add_field(name=f"**Seems like you're missing a required argument:**", value=f":warning: Error: `{error}`\n:information_source: Command usage: `{ctx.prefix}{ctx.command.signature}`".replace(ctx.me.mention, f"@{self.bot.user.name}")).set_footer(text=ctx.author, icon_url=ctx.author.avatar_url), delete_after=10)
 
