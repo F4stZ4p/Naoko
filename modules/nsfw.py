@@ -39,7 +39,8 @@ class NSFW():
             embedneko = discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at)
             embedneko.set_footer(text=f"{ctx.author.name}, an error occured. API trouble or no tags found for {tag}.", icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embedneko)
-                                    
+
+    @nsfw()                                
     @commands.command(pass_context=True, aliases=["urb","ud","urban"])
     @commands.cooldown(1.0, 10.0, commands.BucketType.user)
     async def urbandictionary(self, ctx, *, urbanword):
@@ -78,6 +79,19 @@ class NSFW():
             emdexs = discord.Embed(color=0x1f2439)
             emdexs.set_footer(text='API is unavailable now. Try again later!', icon_url='https://raw.githubusercontent.com/F4stZ4p/resources-for-discord-bot/master/error.ico')
             await ctx.send(embed=emdexs)
+                                        
+    @nsfw()
+    @commands.command(pass_context=True)
+    @commands.cooldown(1.0, 5.0, commands.BucketType.user)
+    async def emojitest(self, ctx):
+        """ Emoji test! """
+        myemojis = [e.id for e in self.bot.emojis]
+        myemojis = random.sample(myemojis, 20)
+        embed = discord.Embed(color=random.randint(0x000000, 0xFFFFFF), title="Emoji Test (may be NSFW)")
+        msg = await ctx.send(embed=embed)
+        for emoji in myemojis:
+            await msg.add_reaction(self.bot.get_emoji(emoji))
+
 
 
 def setup(bot):
