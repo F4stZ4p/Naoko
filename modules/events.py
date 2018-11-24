@@ -2,9 +2,15 @@ from discord import Embed
 from discord.ext import commands
 from random import randint
 
-class JoinMessage():
+class Events():
     def __init__(self, bot):
         self.bot = bot
+        
+    async def update_stats(self):
+        try:
+            await self.bot.session.post(f"https://discordbots.org/api/bots/{self.bot.user.id}/stats", data={"server_count": len(self.bot.guilds), "shard_count": len(self.bot.shards)}, headers={"Authorization": self.bot.config.dbltoken})
+        except:
+            pass
 
     def info_box(self, g):
         return f"""
@@ -26,6 +32,11 @@ My name is **Naoko** and i'm **multifunctional** bot for Discord. You can view a
             await guild.system_channel.send(embed=self.generate_join_embed(guild))
         except:
             pass
+        
+        await self.update_stats()
+        
+    async def on_guild_remove(self, g):
+        await self.update_stats()
 
 def setup(bot):
-    bot.add_cog(JoinMessage(bot))
+    bot.add_cog(Events(bot))
