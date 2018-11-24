@@ -107,7 +107,7 @@ class Commands():
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def upvote(self, ctx):
         """Upvote me for a big thanks!"""
-        await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at, title="Upvote me for a big thanks!", url="https://discordbots.org/bot/444950506234707978/vote").set_image(url="https://discordbots.org/api/widget/444950506234707978.svg").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url))
+        await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at, title="Upvote me for a big thanks!", url="https://discordbots.org/bot/444950506234707978/vote").set_image(url="https://discordbots.org/api/widget/444950506234707978.png").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url))
 
     @commands.command()
     @commands.cooldown(1.0, 30.0, commands.BucketType.user)
@@ -117,7 +117,7 @@ class Commands():
         (hours, remainder) = divmod(int(delta_uptime.total_seconds()), 3600)
         (minutes, seconds) = divmod(remainder, 60)
         (days, hours) = divmod(hours, 24)
-        await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at).set_image(url="https://discordbots.org/api/widget/444950506234707978.png").add_field(name=":bar_chart: Naoko Statistics", value=f'**[Support Guild](https://discord.gg/y3Ph9Nj) | [Patreon](https://www.patreon.com/f4stz4p) | [Invite](https://discordapp.com/oauth2/authorize?client_id=444950506234707978&permissions=8&scope=bot) | [GitHub](https://github.com/F4stZ4p/Naoko)**\n\n<:online:452823889177870336> Alive for: **{days}D, {hours}H, {minutes}M, {seconds}S**\n:information_source: Latest update:\n```ini\n{self.bot.stat}```').set_footer(text=f'Bringing fun to Discord since {ptime(ctx.me.created_at)} | {ctx.author}', icon_url=ctx.author.avatar_url))
+        await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at).set_image(url="https://discordbots.org/api/widget/444950506234707978.png").add_field(name=":bar_chart: Naoko Statistics", value=f'**[Support Guild](https://discord.gg/y3Ph9Nj) | [Patreon](https://www.patreon.com/f4stz4p) | [Invite](https://discordapp.com/oauth2/authorize?client_id=444950506234707978&permissions=8&scope=bot) | [GitHub](https://github.com/F4stZ4p/Naoko) | [Upvote] (https://discordbots.org/bot/444950506234707978/vote)**\n\n<:online:452823889177870336> Alive for: **{days}D, {hours}H, {minutes}M, {seconds}S**\n:information_source: Latest update:\n```ini\n{self.bot.stat}```').set_footer(text=f'Bringing fun to Discord since {ptime(ctx.me.created_at)} | {ctx.author}', icon_url=ctx.author.avatar_url))
 
     @commands.command(aliases=['sandbox', 'run'])
     @commands.cooldown(1.0, 10.0, commands.BucketType.user)
