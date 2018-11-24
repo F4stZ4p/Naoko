@@ -107,7 +107,7 @@ class Commands():
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def upvote(self, ctx):
         """Upvote me for a big thanks!"""
-        await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at, title="Upvote me for a big thanks!", url="https://discordbots.org/bot/444950506234707978/vote").set_image(url="https://discordbots.org/api/widget/444950506234707978.svg").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url)))
+        await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at, title="Upvote me for a big thanks!", url="https://discordbots.org/bot/444950506234707978/vote").set_image(url="https://discordbots.org/api/widget/444950506234707978.svg").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url))
 
     @commands.command()
     @commands.cooldown(1.0, 30.0, commands.BucketType.user)
