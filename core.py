@@ -28,7 +28,7 @@ class Naoko(commands.AutoShardedBot):
         self.path = os.path.dirname(os.path.realpath(__file__))
         self.patrons = []
         self.launch_time = datetime.utcnow()
-        self.startup_extensions = ('modules.image', 'modules.joinmessage', 'modules.minecraft', 'modules.search', 'modules.space', 'modules.games', 'modules.commands', 'modules.misc','modules.eh','modules.fun','modules.moderator','modules.owner','modules.economy','modules.settings','modules.customcommands', 'modules.nsfw')
+        self.startup_extensions = ('modules.image', 'modules.events', 'modules.minecraft', 'modules.search', 'modules.space', 'modules.games', 'modules.commands', 'modules.misc','modules.eh','modules.fun','modules.moderator','modules.owner','modules.economy','modules.settings','modules.customcommands', 'modules.nsfw')
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.stat = "No recent updates or announcements"
         self.all_prefixes = {}
