@@ -16,11 +16,6 @@
         <a href="https://python.org">
             <img src="https://img.shields.io/pypi/pyversions/Django.svg"/>
         </a>
-        
-        <h4>You can also vote for Naoko on Discord Bot List</h4>
-        <a href="https://discordbots.org/bot/444950506234707978">
-            <img src="https://discordbots.org/api/widget/444950506234707978.svg"/>
-        </a>
 
     </p>
     <hr>
@@ -35,5 +30,10 @@
            <li>Music commands</li>
            <li>Custom commands and more!</li>
        </ul>
+       
+   <h4>You can also vote for Naoko on Discord Bot List</h4>
+   <a href="https://discordbots.org/bot/444950506234707978">
+       <img src="https://discordbots.org/api/widget/444950506234707978.svg"/>
+   </a>
 
     <h4>Naoko is licensed work, copying and using code without permission is forbidden. Copyright (c) 2018 F4stZ4p</h4>
