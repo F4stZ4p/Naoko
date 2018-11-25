@@ -16,6 +16,11 @@
         <a href="https://python.org">
             <img src="https://img.shields.io/pypi/pyversions/Django.svg"/>
         </a>
+        
+        <h4>You can also vote for Naoko on Discord Bot List</h4>
+        <a href="https://discordbots.org/bot/444950506234707978">
+            <img src="https://discordbots.org/api/widget/444950506234707978.svg"/>
+        </a>
 
     </p>
     <hr>
