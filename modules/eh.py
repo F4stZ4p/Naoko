@@ -33,8 +33,7 @@ class CommandErrorHandler:
 
         elif isinstance(error, commands.CheckFailure):
             if type(error) == checks.naoko_checks.OwnerOnly:
-                await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at).add_field(name=f"**Invalid command entered. Did you mean:**", value=f"`{' | '.join(str(command) for command in self.bot.commands if lv.distance(ctx.invoked_with, command.name) < 4 and not command.hidden) or 'Sorry, no similar commands found'}`").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url), delete_after=10)
-
+                pass
             elif type(error) == checks.naoko_checks.NSFWOnly:
                 await ctx.send(embed=discord.Embed(color=random.randint(0x000000, 0xFFFFFF), timestamp=ctx.message.created_at).add_field(name=f"**Seems like you can't use this command here:**", value=f":warning: Error: `this command can be used only in NSFW channels.`").set_footer(text=ctx.author, icon_url=ctx.author.avatar_url), delete_after=10)
             elif type(error) == checks.naoko_checks.PatronOnly:
