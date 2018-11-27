@@ -45,7 +45,7 @@ class Naoko(commands.AutoShardedBot):
         return "Naoko Bot"
 
     async def start_db(self):
-        self.db = await asyncpg.create_pool(**{"user": self.config.user, "password": self.config.password, "database": self.config.database, "host": self.config.host})
+        self.db = await asyncpg.create_pool(user=self.config.user, password=self.config.password, database=self.config.database, host=self.config.host)
 
     async def make_db(self):
         async with self.db.acquire() as con:
