@@ -22,6 +22,7 @@ My name is **Naoko** and i'm **multifunctional** bot for Discord. You can view a
 **[➙ Bot Website](https://naokobot.github.io)**
 **[➙ Support The Bot](https://patreon.com/F4stZ4p)**
 **[➙ Support Server](https://discord.gg/y3Ph9Nj)**
+**[➙ Upvote me on Discord Bot List](https://discordbots.org/bot/444950506234707978)**
                 """
 
     def generate_join_embed(self, g):
