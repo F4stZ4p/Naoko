@@ -35,5 +35,3 @@
    <a href="https://discordbots.org/bot/"> 
        <img src="https://discordbots.org/api/widget/444950506234707978.svg?topcolor=D896FF&datacolor=823ed6&highlightcolor=D896FF&labelcolor=5d2f77&certifiedcolor=9c4cff"/>
    </a>
-
-    <h4>Naoko is licensed work, copying and using code without permission is forbidden. Copyright (c) 2018 F4stZ4p</h4>
