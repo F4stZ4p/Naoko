@@ -92,9 +92,9 @@ class Naoko(commands.AutoShardedBot):
             ctx.command.reset_cooldown(ctx)
         
         try:
-            self.bot.usage[ctx.command.name] + 1
+            self.usage[ctx.command.name] + 1
         except:
-            self.bot.usage[ctx.command.name] = 1
+            self.usage[ctx.command.name] = 1
 
         logger.superlog(f'[ COMMAND ] {ctx.author}: {ctx.message.content}', ctx.message.guild)
 
