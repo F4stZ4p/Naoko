@@ -32,6 +32,7 @@ class Naoko(commands.AutoShardedBot):
         self.session = aiohttp.ClientSession(loop=self.loop)
         self.stat = "No recent updates or announcements"
         self.all_prefixes = {}
+        self.usage = {}
 
     async def get_prefix(self, message):
         if not message.guild:
@@ -91,9 +92,9 @@ class Naoko(commands.AutoShardedBot):
             ctx.command.reset_cooldown(ctx)
         
         try:
-            ctx.command.uses + 1
+            self.bot.usage[ctx.command] + 1
         except:
-            ctx.command.uses = 1
+            self.bot.usage[ctx.command] = 1
 
         logger.superlog(f'[ COMMAND ] {ctx.author}: {ctx.message.content}', ctx.message.guild)
 
