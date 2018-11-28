@@ -89,6 +89,12 @@ class Naoko(commands.AutoShardedBot):
     async def on_command(self, ctx):
         if ctx.author.id in self.patrons:
             ctx.command.reset_cooldown(ctx)
+        
+        try:
+            ctx.command.uses + 1
+        except:
+            ctx.command.used = 1
+
         logger.superlog(f'[ COMMAND ] {ctx.author}: {ctx.message.content}', ctx.message.guild)
 
     async def on_message(self, message):
