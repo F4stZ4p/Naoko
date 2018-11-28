@@ -92,7 +92,7 @@ class Naoko(commands.AutoShardedBot):
             ctx.command.reset_cooldown(ctx)
         
         try:
-            self.usage[ctx.command.name] + 1
+            self.usage[ctx.command.name] += 1
         except:
             self.usage[ctx.command.name] = 1
 
