@@ -93,7 +93,7 @@ class Naoko(commands.AutoShardedBot):
         try:
             ctx.command.uses + 1
         except:
-            ctx.command.used = 1
+            ctx.command.uses = 1
 
         logger.superlog(f'[ COMMAND ] {ctx.author}: {ctx.message.content}', ctx.message.guild)
 
