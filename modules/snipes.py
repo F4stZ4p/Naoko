@@ -30,7 +30,8 @@ class Snipes():
         try:
             self.snipes[message.channel.id].appendleft(message)
         except:
-            self.snipes[message.channel.id] = SnipeHistory().appendleft(message)
+            self.snipes[message.channel.id] = SnipeHistory()
+            self.snipes[message.channel.id].appendleft(message)
         
     @commands.command()
  #   @commands.cooldown(1.0, 5.0, commands.BucketType.user)
