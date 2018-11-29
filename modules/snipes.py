@@ -45,9 +45,5 @@ class Snipes():
             
             await ctx.send(embed=discord.Embed(title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content))
             
-    @snipe.error
-    async def snipe_error(self, error, ctx):
-        await ctx.send(':warning: | **No things to snipe in this channel or your index is invalid and must be in range 1-5**', delete_after=10)       
-            
 def setup(bot):
     bot.add_cog(Snipes(bot))
