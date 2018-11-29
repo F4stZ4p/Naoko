@@ -47,8 +47,11 @@ class Snipes():
         else:
             sniped = self.snipes[channel.id][index]
             
-            await ctx.send(embed=discord.Embed(color=r(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}",  description=sniped.clean_content).set_thumbnail(url=sniped.author.avatar_url).set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url))
-   
+            embed=discord.Embed(color=r(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
+            embed.set_thumbnail(url=sniped.author.avatar_url)
+            embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+
     @snipe.error
     async def snipe_error(self, error, ctx):
         await ctx.send(':warning: | **Invalid channel or index is greater than 5 or lesser than 1**', delete_after=10)
