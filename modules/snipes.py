@@ -16,12 +16,8 @@ class Snipes():
         self.snipes = {}
         self.thumbnail = self.bot.user.avatar_url
         
-        self.bot.loop.create_task(self.cleanup())
-        
-    async def cleanup(self):
-        """Background loop to clean up snipe cache"""
-        
-        await asyncio.sleep(600) # snipes will be stored for 10 minutes
+    def cleanup(self):
+        """Function to clean up snipe cache"""
         self.snipes = {}
     
     async def on_message_delete(self, message):
