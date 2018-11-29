@@ -19,11 +19,11 @@ class Snipes():
         if message.channel.is_nsfw():
             return
         
-        if not self.snipes[message.channel.id]:
+        try:
+            self.snipes[message.channel.id].append(message)
+        except:
             self.snipes[message.channel.id] = SnipeHistory()
-        
-        self.snipes[message.channel.id].append(message)
-        
+            self.snipes[message.channel.id].append(message)
         
     @commands.command()
  #   @commands.cooldown(1.0, 5.0, commands.BucketType.user)
