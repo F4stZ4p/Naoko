@@ -32,14 +32,16 @@ class Snipes():
         
     @commands.command()
  #   @commands.cooldown(1.0, 5.0, commands.BucketType.user)
-    async def snipe(self, ctx, channel: discord.TextChannel = None, index: int = None):
+    async def snipe(self, ctx, channel: discord.TextChannel = None, index: int = 0):
         
         channel = channel or ctx.channel
-        index = index-1 or 0
         
         if channel.is_nsfw():
             await ctx.send('Attempting to snipe a NSFW channel')
         
+        if index != 0:
+            index = index-1
+
         else:
             sniped = self.snipes[channel.id][index]
             
