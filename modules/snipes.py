@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
+
 from collections import deque
-from typing import Optional
+from random import randint as r
 
 class SnipeHistory(deque):
     def __init__(self):
@@ -34,7 +35,7 @@ class Snipes():
         
     @commands.command()
  #   @commands.cooldown(1.0, 5.0, commands.BucketType.user)
-    async def snipe(self, ctx, channel: Optional[discord.TextChannel] = None, index: int = 0):
+    async def snipe(self, ctx, channel: discord.TextChannel = None, index: int = 0):
         
         channel = channel or ctx.channel
         
@@ -47,7 +48,7 @@ class Snipes():
         else:
             sniped = self.snipes[channel.id][index]
             
-            await ctx.send(embed=discord.Embed(title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content))
+            await ctx.send(embed=discord.Embed(color=r(0x000000, 0xFFFFFF), title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content))
             
 def setup(bot):
     bot.add_cog(Snipes(bot))
