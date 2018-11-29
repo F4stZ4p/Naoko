@@ -13,7 +13,7 @@ class Snipes():
     def __init__(self, bot):
         self.bot = bot
         self.snipes = {}
-        self.thumbnail = self.bot.avatar_url
+        self.thumbnail = self.bot.user.avatar_url
         
     async def on_message_delete(self, message):
         if message.channel.is_nsfw():
