@@ -20,7 +20,7 @@ class Snipes():
             return
         
         if not self.snipes[message.channel.id]:
-            self.snipes[ctx.channel.id] = SnipeHistory()
+            self.snipes[message.channel.id] = SnipeHistory()
         
         self.snipes[message.channel.id].append(message)
         
