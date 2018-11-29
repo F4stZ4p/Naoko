@@ -1,6 +1,7 @@
 import discord
 import asyncio
 from discord.ext import commands
+from discord.ext.commands.cooldowns import BucketType
 
 from collections import deque
 from random import randint as rint
@@ -22,9 +23,9 @@ class Snipes():
         self.bot.loop.create_task(self.cleanup())
         
     async def cleanup(self):
-        """Function to clean up snipe cache"""
+        """Background function to clean up snipe cache"""
         
-        await asyncio.sleep(10)
+        await asyncio.sleep(600) # cache will be cleaned after 10 minutes
         self.snipes = {}
     
     async def on_message_delete(self, message):
@@ -39,7 +40,7 @@ class Snipes():
             self.snipes[message.channel.id].appendleft(message)
         
     @commands.command()
- #   @commands.cooldown(1.0, 5.0, commands.BucketType.user)
+    @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def snipe(self, ctx, channel: discord.TextChannel = None, index: int = 0):
         
         channel = channel or ctx.channel
@@ -48,7 +49,7 @@ class Snipes():
             index = index-1
 
         if channel.is_nsfw():
-            return await ctx.send('Attempting to snipe a NSFW channel')
+            return await ctx.send(':warning: | **Attempting to snipe a NSFW channel**', delete_after=5)
 
         try:
             sniped = self.snipes[channel.id][index]
