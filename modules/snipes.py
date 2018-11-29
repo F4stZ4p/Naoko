@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 from collections import deque
-from random import randint as r
+from random import randint as rint
 
 class SnipeHistory(deque):
     def __init__(self):
@@ -47,8 +47,9 @@ class Snipes():
         else:
             sniped = self.snipes[channel.id][index]
             
-            embed=discord.Embed(color=r(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
+            embed=discord.Embed(color=rint(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
             embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
+            embed.set_thumbnail(url=sniped.author.avatar_url)
             await ctx.send(embed=embed)
 
     @snipe.error
