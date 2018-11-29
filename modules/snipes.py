@@ -43,7 +43,7 @@ class Snipes():
         else:
             sniped = self.snipes[channel.id][index]
             
-            await ctx.send(embed=discord.Embed(color=ctx.author.top_role.colour, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content))
+            await ctx.send(embed=discord.Embed(title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content))
             
     @snipe.error
     async def snipe_error(self, error, ctx):
