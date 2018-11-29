@@ -18,8 +18,12 @@ class Snipes():
         self.snipes = {}
         self.thumbnail = self.bot.user.avatar_url
         
-    def cleanup(self):
+        self.bot.loop.create_task(self.cleanup())
+        
+    async def cleanup(self):
         """Function to clean up snipe cache"""
+        
+        await asyncio.sleep(10)
         self.snipes = {}
     
     async def on_message_delete(self, message):
@@ -48,7 +52,7 @@ class Snipes():
         try:
             sniped = self.snipes[channel.id][index]
         except:
-            return await ctx.send(':warning: | **Index must not be greater than 5 or lesser than 1**', delete_after=10)
+            return await ctx.send(':warning: | **No message to snipe or index must not be greater than 5 or lesser than 1**', delete_after=10)
         
         embed=discord.Embed(color=rint(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
         embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
