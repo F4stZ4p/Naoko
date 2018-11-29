@@ -18,7 +18,7 @@ class Snipes():
     def __init__(self, bot):
         self.bot = bot
         self.snipes = {}
-        self.thumbnail = self.bot.user.avatar_url
+        self.thumbnail = "https://i.imgur.com/BHZU6zX.png"
         
         self.bot.loop.create_task(self.cleanup())
         
