@@ -38,12 +38,14 @@ class Snipes():
     async def snipe(self, ctx, channel: discord.TextChannel = None, index: int = 0):
         
         channel = channel or ctx.channel
-        
+
+        if index != 0:
+            index = index-1
+
         if channel.is_nsfw():
             await ctx.send('Attempting to snipe a NSFW channel')
         
-        if index != 0:
-            index = index-1
+
 
         else:
             sniped = self.snipes[channel.id][index]
