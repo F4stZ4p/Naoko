@@ -49,11 +49,11 @@ class Snipes():
             sniped = self.snipes[channel.id][index]
         except:
             return await ctx.send(':warning: | **Index must not be greater than 5 or lesser than 1**', delete_after=10)
-
-            embed=discord.Embed(color=rint(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
-            embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
-            embed.set_thumbnail(url=sniped.author.avatar_url)
-            await ctx.send(embed=embed)
+        
+        embed=discord.Embed(color=rint(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
+        embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
+        embed.set_thumbnail(url=sniped.author.avatar_url)
+        await ctx.send(embed=embed)
  
 def setup(bot):
     bot.add_cog(Snipes(bot))
