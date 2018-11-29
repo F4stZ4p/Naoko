@@ -46,16 +46,15 @@ class Snipes():
             await ctx.send('Attempting to snipe a NSFW channel')
 
         else:
-            sniped = self.snipes[channel.id][index]
-            
-            embed=discord.Embed(color=rint(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
-            embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
-            embed.set_thumbnail(url=sniped.author.avatar_url)
-            await ctx.send(embed=embed)
-
-    @snipe.error
-    async def snipe_error(self, error, ctx):
-        await ctx.send(':warning: | **Invalid channel or index is greater than 5 or lesser than 1**', delete_after=10)
-
+            try:
+                sniped = self.snipes[channel.id][index]
+            except:
+                await ctx.send(':warning: | **Index must not be greater than 5 or lesser than 1**', delete_after=10)
+            else:
+                embed=discord.Embed(color=rint(0x000000, 0xFFFFFF), timestamp=sniped.created_at, title=f"@{sniped.author} said in #{sniped.channel}", description=sniped.clean_content)
+                embed.set_footer(text=f"Sniped by {ctx.author.name} | Message created", icon_url=ctx.author.avatar_url)
+                embed.set_thumbnail(url=sniped.author.avatar_url)
+                await ctx.send(embed=embed)
+ 
 def setup(bot):
     bot.add_cog(Snipes(bot))
