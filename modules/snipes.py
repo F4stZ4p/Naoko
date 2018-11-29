@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from collections import deque
+from typing import Optional
 
 class SnipeHistory(deque):
     def __init__(self):
@@ -33,7 +34,7 @@ class Snipes():
         
     @commands.command()
  #   @commands.cooldown(1.0, 5.0, commands.BucketType.user)
-    async def snipe(self, ctx, channel: discord.TextChannel = None, index: int = 0):
+    async def snipe(self, ctx, channel: Optional[discord.TextChannel] = None, index: int = 0):
         
         channel = channel or ctx.channel
         
