@@ -20,13 +20,9 @@ class Snipes():
         self.snipes = {}
         self.thumbnail = "https://i.imgur.com/BHZU6zX.png"
         
-        self.bot.loop.create_task(self.cleanup())
+
         
-    async def cleanup(self):
-        """Background function to clean up snipe cache"""
-        
-        await asyncio.sleep(600) # cache will be cleaned after 10 minutes
-        self.snipes = {}
+
     
     async def on_message_delete(self, message):
         """Event is triggered when message is deleted"""
