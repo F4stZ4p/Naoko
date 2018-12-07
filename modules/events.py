@@ -2,13 +2,21 @@ from discord import Embed
 from discord.ext import commands
 from random import randint
 
-class Events():
+
+class Events:
     def __init__(self, bot):
         self.bot = bot
-        
+
     async def update_stats(self):
         try:
-            await self.bot.session.post(f"https://discordbots.org/api/bots/{self.bot.user.id}/stats", data={"server_count": len(self.bot.guilds), "shard_count": len(self.bot.shards)}, headers={"Authorization": self.bot.config.dbltoken})
+            await self.bot.session.post(
+                f"https://discordbots.org/api/bots/{self.bot.user.id}/stats",
+                data={
+                    "server_count": len(self.bot.guilds),
+                    "shard_count": len(self.bot.shards),
+                },
+                headers={"Authorization": self.bot.config.dbltoken},
+            )
         except:
             pass
 
@@ -26,18 +34,27 @@ My name is **Naoko** and i'm **multifunctional** bot for Discord. You can view a
                 """
 
     def generate_join_embed(self, g):
-        return Embed(title="Hello!", color=randint(0x000000, 0xFFFFFF), description=self.info_box(g)).set_footer(icon_url=g.icon_url, text=g.name).set_thumbnail(url=g.me.avatar_url)
+        return (
+            Embed(
+                title="Hello!",
+                color=randint(0x000000, 0xFFFFFF),
+                description=self.info_box(g),
+            )
+            .set_footer(icon_url=g.icon_url, text=g.name)
+            .set_thumbnail(url=g.me.avatar_url)
+        )
 
     async def on_guild_join(self, guild):
         try:
             await guild.system_channel.send(embed=self.generate_join_embed(guild))
         except:
             pass
-        
+
         await self.update_stats()
-        
+
     async def on_guild_remove(self, g):
         await self.update_stats()
+
 
 def setup(bot):
     bot.add_cog(Events(bot))
