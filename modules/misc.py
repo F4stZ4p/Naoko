@@ -135,16 +135,23 @@ class Miscellaneous:
 
     @commands.command()
     @commands.cooldown(1.0, 10.0, commands.BucketType.user)
-    async def invite(self, ctx):
-        """Invite me!"""
+    async def invite(self, ctx, botto: discord.User = None):
+        """Invite me or any bot you want!"""
+        botto = botto or ctx.me
+        
+        if not botto.bot:
+            return await ctx.send(
+                        "**:bangbang: | This user is not a bot. You can't invite them!**"
+                    )
+
         await ctx.send(
             embed=discord.Embed(
                 color=random.randint(0x000000, 0xFFFFFF),
                 timestamp=ctx.message.created_at,
             )
             .add_field(
-                name="**:rose: Hey! Do you want to invite me?**",
-                value=f":sparkling_heart: If you want everything... **[● Invite](https://discordapp.com/oauth2/authorize?client_id=444950506234707978&permissions=8&scope=bot)**\n:heartpulse: If you just want minimal permissions... **[● Invite](https://discordapp.com/oauth2/authorize?client_id=444950506234707978&permissions=37080128&scope=bot)**",
+                name=f"**:rose: Hey! Do you want to invite {botto.name}?**",
+                value=f":sparkling_heart: If you want everything... **[● Invite](https://discordapp.com/oauth2/authorize?client_id={botto.id}&permissions=8&scope=bot)**\n:heartpulse: If you just want minimal permissions... **[● Invite](https://discordapp.com/oauth2/authorize?client_id={botto.id}&permissions=37080128&scope=bot)**",
             )
             .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
         )
