@@ -155,6 +155,7 @@ class Miscellaneous:
                 value=f":sparkling_heart: If you want everything... **[● Invite](https://discordapp.com/oauth2/authorize?client_id={botto.id}&permissions=8&scope=bot)**\n:heartpulse: If you just want minimal permissions... **[● Invite](https://discordapp.com/oauth2/authorize?client_id={botto.id}&permissions=37080128&scope=bot)**",
             )
             .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+            .set_thumbnail(icon_url=botto.avatar_url)
         )
 
     @commands.command()
