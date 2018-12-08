@@ -155,14 +155,16 @@ class Miscellaneous:
                 value=f":sparkling_heart: If you want everything... **[● Invite](https://discordapp.com/oauth2/authorize?client_id={botto.id}&permissions=8&scope=bot)**\n:heartpulse: If you just want minimal permissions... **[● Invite](https://discordapp.com/oauth2/authorize?client_id={botto.id}&permissions=37080128&scope=bot)**",
             )
             .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
-            .set_thumbnail(icon_url=botto.avatar_url)
+            .set_thumbnail(url=botto.avatar_url)
         )
 
     @commands.command()
     @commands.cooldown(1.0, 3.0, commands.BucketType.user)
     async def choose(self, ctx, *choices: commands.clean_content):
         """Wanna choose something? I can help you!"""
-        await ctx.send(random.choice(choices))
+        await ctx.send(
+                      f":information_source: | {ctx.author.mention}, my choice is {random.choice(choices))}"
+              )
 
     @commands.command()
     @commands.cooldown(1.0, 1.0, commands.BucketType.user)
