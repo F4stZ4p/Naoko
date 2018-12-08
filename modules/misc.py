@@ -141,7 +141,8 @@ class Miscellaneous:
         
         if not botto.bot:
             return await ctx.send(
-                        "**:bangbang: | This user is not a bot. You can't invite them!**"
+                        ":bangbang: | **This user is not a bot. You can't invite them!**",
+                        delete_after=5,
                     )
 
         await ctx.send(
