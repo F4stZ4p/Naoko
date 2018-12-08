@@ -16,6 +16,9 @@
         <a href="https://python.org">
             <img src="https://img.shields.io/pypi/pyversions/Django.svg"/>
         </a>
+        <a href="https://github.com/ambv/black">
+            <img src="https://img.shields.io/badge/code%20style-black-000000.svg">
+        </a>
 
     </p>
     <hr>
