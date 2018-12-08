@@ -163,7 +163,7 @@ class Miscellaneous:
     async def choose(self, ctx, *choices: commands.clean_content):
         """Wanna choose something? I can help you!"""
         await ctx.send(
-                      f":information_source: | {ctx.author.mention}, my choice is {random.choice(choices))}"
+                      f":information_source: | {ctx.author.mention}, my choice is {random.choice(choices)}"
               )
 
     @commands.command()
