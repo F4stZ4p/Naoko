@@ -14,6 +14,8 @@ class ImageModule:
 
     def __init__(self, bot):
         self.bot = bot
+        
+        self._font_path = f"{self.bot.path}/fonts/Azoft-Sans.ttf"
         self.thumbnail = "https://i.imgur.com/mb1sg1b.png"
 
     async def get_avatar(self, user: Union[discord.User, discord.Member]) -> bytes:
@@ -136,7 +138,7 @@ class ImageModule:
                     drake_bytes,
                     no,
                     yes,
-                    f"{self.bot.path}/fonts/Azoft-Sans.ttf",
+                    self._font_path,
                 ),
             )
             await ctx.send(
