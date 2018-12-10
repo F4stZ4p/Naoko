@@ -74,7 +74,7 @@ class Moderator:
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     @commands.has_permissions(ban_members=True)
     async def _unban(self, ctx, target: discord.User, *, reason: str = None):
-        """Bans an annoying user. Requires ban members permission. Also bot must have this permission."""
+        """Unbans an user. Requires ban members permission. Also bot must have this permission."""
         if reason is None:
             reason = "No reason specified"
         embedunban = discord.Embed(
