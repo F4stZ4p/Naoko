@@ -84,11 +84,12 @@ class Economy:
                 )
                 .add_field(
                     name="**:dizzy: Leaders**", 
-                    value=f"""
-                    :first_place: | {self.bot.get_user(a[0][0]).mention}: **{a[0][1]}** <a:bitcoin:506081804567052288>
-                    :second_place: | {self.bot.get_user(a[1][0]).mention}: **{a[1][1]}** <a:bitcoin:506081804567052288>
-                    :third_place: | {self.bot.get_user(a[2][0]).mention}: **{a[2][1]}** <a:bitcoin:506081804567052288>
-                    """
+                    value=
+f"""
+:first_place: | {self.bot.get_user(a[0][0]).mention}: **{a[0][1]}** <a:bitcoin:506081804567052288>
+:second_place: | {self.bot.get_user(a[1][0]).mention}: **{a[1][1]}** <a:bitcoin:506081804567052288>
+:third_place: | {self.bot.get_user(a[2][0]).mention}: **{a[2][1]}** <a:bitcoin:506081804567052288>
+"""
                 )
                 .set_footer(
                     text=f"These stats are global, {ctx.author.name}",
