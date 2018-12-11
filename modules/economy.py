@@ -88,6 +88,13 @@ class Economy:
                     :third_place: | {self.bot.get_user(a[2][0]).mention}: {a[2][1]}
                     """
                 )
+                .set_footer(
+                    text="These stats are global",
+                    icon_url=ctx.author.avatar_url
+                )
+                .set_thumbnail(
+                    url=self.thumbnail
+                )
             )
     
     @commands.command()
