@@ -63,7 +63,33 @@ class Economy:
                     delete_after=15,
                 )
             await self.bot.db.release(con)
-
+            
+    @commands.command(aliases=["lb", "leaders"])
+    @commands.cooldown(1.0, 10.0, commands.BucketType.user)
+    async def leaderboard(self, ctx):
+        """Shows global leaderboard"""
+        async with self.bot.db.acquire() as con:
+            
+            a = await con.fetch(
+                "SELECT * FROM users ORDER BY money DESC LIMIT 3"
+            )
+            
+            await self.bot.db.release(con)
+            
+            await ctx.send(
+                embed=discord.Embed(
+                    title="The Richest People", color=random.randint(0x000000, 0xFFFFFF)
+                )
+                .add_field(
+                    name="**:dizzy: Leaders**", 
+                    value=f"""
+                    :first_place: | {self.bot.get_user(a[0][0]).mention}: {a[0][1]}
+                    :second_place: | {self.bot.get_user(a[1][0]).mention}: {a[1][1]}
+                    :third_place: | {self.bot.get_user(a[2][0]).mention}: {a[2][1]}
+                    """
+                )
+            )
+    
     @commands.command()
     @commands.cooldown(1.0, 3600.0, commands.BucketType.user)
     async def create(self, ctx):
