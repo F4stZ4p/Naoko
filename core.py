@@ -19,8 +19,8 @@ class Naoko(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(command_prefix=self.get_prefix, case_insensitive=True)
 
-        # self.lavalink = lavalink.Client(bot=self, loop=self.loop)
-        # self.lavalink.nodes.add(lavalink.Regions.all(), password="youshallnotpass", rest_port=2333, ws_port=80, host='')
+        self.lavalink = lavalink.Client(bot=self, loop=self.loop)
+        self.lavalink.nodes.add(lavalink.Regions.all(), password="youshallnotpass", rest_port=2333, ws_port=80, host='')
 
         self.config = NaokoConfig()
         self.blacklist = [entry for entry in self.config.blacklist]
