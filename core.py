@@ -20,7 +20,7 @@ class Naoko(commands.AutoShardedBot):
         super().__init__(command_prefix=self.get_prefix, case_insensitive=True)
 
         self.lavalink = lavalink.Client(bot=self, loop=self.loop)
-        self.lavalink.nodes.add(lavalink.Regions.all(), password="youshallnotpass", rest_port=2333, ws_port=80, host='')
+        self.lavalink.nodes.add(lavalink.Regions.all(), password="adrianisgay12345", rest_port=2333, ws_port=80, host='127.0.0.1')
 
         self.config = NaokoConfig()
         self.blacklist = [entry for entry in self.config.blacklist]
