@@ -1,4 +1,4 @@
-import discord, asyncio, re, os, psutil, traceback, time, gc, random, aiohttp, asyncpg, sys
+import discord, asyncio, re, os, psutil, traceback, time, gc, random, aiohttp, asyncpg, sys, lavalink
 from datetime import datetime
 from discord.ext import commands
 from discord.ext.commands.cooldowns import BucketType
