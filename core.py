@@ -29,6 +29,7 @@ class Naoko(commands.AutoShardedBot):
         self.patrons = []
         self.launch_time = datetime.utcnow()
         self.startup_extensions = (
+            "modules.music",
             "modules.snipes",
             "modules.image",
             "modules.events",
