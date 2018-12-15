@@ -1,4 +1,5 @@
-import discord, asyncio, re, os, psutil, traceback, time, gc, random, aiohttp, asyncpg, sys, lavalink
+import discord, asyncio, re, os, psutil, traceback, time, gc, random, aiohttp, asyncpg, sys
+import aqualink
 from datetime import datetime
 from discord.ext import commands
 from discord.ext.commands.cooldowns import BucketType
@@ -19,8 +20,7 @@ class Naoko(commands.AutoShardedBot):
     def __init__(self):
         super().__init__(command_prefix=self.get_prefix, case_insensitive=True)
 
-        self.lavalink = lavalink.Client(bot=self, loop=self.loop)
-        self.lavalink.nodes.add(lavalink.Regions.all(), password="adrianisgay12345", rest_port=2333, ws_port=80, host='127.0.0.1')
+        aqualink.Connection(self)
 
         self.config = NaokoConfig()
         self.blacklist = [entry for entry in self.config.blacklist]
@@ -111,6 +111,12 @@ class Naoko(commands.AutoShardedBot):
 
     async def _get_owner(self):
         self.owner = (await self.application_info()).owner
+        
+    async def _start_aqualink(self):
+        await self.aqualink.connect(password="adrianisgay12345", 
+                                    ws_url="ws://localhost:2333", 
+                                    rest_url="http://localhost:2333"
+                                   )
 
     async def on_ready(self):
         self.loop.create_task(self.presence())
@@ -121,6 +127,7 @@ class Naoko(commands.AutoShardedBot):
         await self.load_prefixes()
         await self.load_patrons()
         await self._fetch_latest_commit()
+        await self._start_aqualink()
 
     async def on_command(self, ctx):
         if ctx.author.id in self.patrons:
