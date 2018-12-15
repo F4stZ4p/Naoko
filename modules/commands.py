@@ -325,6 +325,41 @@ class Commands:
             .set_thumbnail(url="https://i.imgur.com/46eHxTO.png")
             .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
         )
+        
+    @commands.command(aliases=["ss", "webscreen", "capture"])
+    @commands.cooldown(1.0, 5.0, commands.BucketType.user)
+    async def snapshot(self, ctx, *, website: str):
+        """
+        Capture a website
+        Example: n.snapshot google.com
+        """
+        async with self.bot.session.post(
+            "http://webscreener.herokuapp.com/v1", 
+            headers={"website": website}
+        ) as r:
+            
+            try:
+                response = await r.json()
+                await ctx.send(
+                    embed=discord.Embed(
+                        color=random.randint(0x000000, 0xFFFFFF),
+                        title=website,
+                        url=response["website"]
+                    )
+                
+                .set_image(
+                    url=response["snapshot"]
+                    )
+                
+                .set_footer(
+                    text=f"Snapshotted by {ctx.author.name}",
+                    icon_url=ctx.author.avatar_url
+                )
+            except:
+                await ctx.send(
+                    "<:Error:501773759217401856> | **Failed to snapshot. Check your URL or try again**",
+                    delete_after=5
+                              )
 
 
 def setup(bot):
