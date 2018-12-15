@@ -7,6 +7,7 @@ from discord.ext import commands
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
 from utils.naoko_paginator import NaokoPaginator
+from checks.naoko_checks import *
 from urllib.parse import quote
 from humanize import naturaltime as ptime
 
@@ -327,6 +328,7 @@ class Commands:
         )
         
     @commands.command(aliases=["ss", "webscreen", "capture"])
+    @nsfw()
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def snapshot(self, ctx, *, website: str):
         """
