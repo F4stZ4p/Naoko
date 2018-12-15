@@ -348,16 +348,17 @@ class Commands:
                             timestamp=ctx.message.created_at
                         )
 
-                    .set_image(
-                        url=response["snapshot"]
+                        .set_image(
+                            url=response["snapshot"]
                         )
 
-                    .set_footer(
-                        text=f"Snapshotted by {ctx.author.name}",
-                        icon_url=ctx.author.avatar_url
-                    )
+                        .set_footer(
+                            text=f"Snapshotted by {ctx.author.name} | Content above is user-generated",
+                            icon_url=ctx.author.avatar_url
+                        )
 
-                )
+                    )
+                
                 except:
                     await ctx.send(
                         "<:Error:501773759217401856> | **Failed to snapshot. Check your URL or try again**",
