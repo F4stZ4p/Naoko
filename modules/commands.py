@@ -355,6 +355,8 @@ class Commands:
                     text=f"Snapshotted by {ctx.author.name}",
                     icon_url=ctx.author.avatar_url
                 )
+            
+            )
             except:
                 await ctx.send(
                     "<:Error:501773759217401856> | **Failed to snapshot. Check your URL or try again**",
