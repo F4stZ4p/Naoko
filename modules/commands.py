@@ -337,7 +337,7 @@ class Commands:
         """
         async with ctx.typing():
             async with self.bot.session.post(
-                "http://webscreener.herokuapp.com/v1", 
+                "http://magmachain.herokuapp.com/api/v1", 
                 headers={"website": website}
             ) as r:
                 try:
