@@ -98,7 +98,7 @@ class Economy:
                 await self.bot.db.release(con)
                 
             await ctx.send(
-                f":package: | **You successfully claimed your {bonus} vote bonus! Thanks for voting!**",
+                f":package: | **You successfully claimed your {bonus} <a:bitcoin:506081804567052288> vote bonus! Thanks for voting!**",
                 delete_after=5
             )
             
