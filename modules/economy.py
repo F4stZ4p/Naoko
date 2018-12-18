@@ -65,9 +65,10 @@ class Economy:
             await self.bot.db.release(con)
             
     @commands.command(aliases=["vb", "bonus"])
-    @commands.cooldown(1.0, 20.0, commands.BucketType.user)
+    @commands.cooldown(1.0, 86400.0, commands.BucketType.user)
     async def votebonus(self, ctx):
         """Claim your bonus for voting"""
+
         async with self.bot.session.get(
             f"https://discordbots.org/api/bots/{ctx.me.id}/check?userId={ctx.author.id}",
             
