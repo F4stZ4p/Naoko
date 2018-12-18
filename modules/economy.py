@@ -79,7 +79,7 @@ class Economy:
             
             voted = await voted.json()
             
-            if voted == 0:
+            if voted["voted"] == 0:
                 return await ctx.send(
                     ":x: **Sorry, you didn't vote for me**",
                     delete_after=5
@@ -97,7 +97,7 @@ class Economy:
                 await self.bot.db.release(con)
                 
             await ctx.send(
-                f":package: | **You successfully claimed your `{bonus}` vote bonus! Thanks for voting!**",
+                f":package: | **You successfully claimed your {bonus} vote bonus! Thanks for voting!**",
                 delete_after=5
             )
             
