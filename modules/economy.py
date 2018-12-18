@@ -77,7 +77,7 @@ class Economy:
 
         ) as voted:
             
-            voted = await resp.json()
+            voted = await voted.json()
             
             if voted == 0:
                 return await ctx.send(
