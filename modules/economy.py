@@ -69,7 +69,7 @@ class Economy:
     async def votebonus(self, ctx):
         """Claim your bonus for voting"""
         async with self.bot.session.get(
-            f"https://discordbots.org/api/bots/{ctx.me.id}/check?userId={ctx.author.id}"
+            f"https://discordbots.org/api/bots/{ctx.me.id}/check?userId={ctx.author.id}",
             
             headers={
                 "Authorization": self.bot.config.dbltoken
