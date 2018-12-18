@@ -64,6 +64,45 @@ class Economy:
                 )
             await self.bot.db.release(con)
             
+    @commands.command(aliases=["vb", "bonus"])
+    @commands.cooldown(1.0, 20.0, commands.BucketType.user)
+    async def votebonus(self, ctx):
+        """Claim your bonus for voting"""
+        async with self.bot.session.get(
+            f"https://discordbots.org/api/bots/{ctx.me.id}/check?userId={ctx.author.id}"
+            
+            headers={
+                "Authorization": self.bot.config.dbltoken
+            }
+
+        ) as voted:
+            
+            voted = await resp.json()
+            
+            if voted == 0:
+                return await ctx.send(
+                    ":x: **Sorry, you didn't vote for me**",
+                    delete_after=5
+                )
+            
+            bonus = random.randint(
+                1000, 3000
+            )
+            
+            async with self.bot.db.acquire() as con:
+                await con.execute(
+                    f"UPDATE users SET money = money + {bonus} WHERE id = {ctx.author.id}"
+                )
+                
+                await self.bot.db.release(con)
+                
+            await ctx.send(
+                f":package: | **You successfully claimed your `{bonus}` vote bonus! Thanks for voting!**",
+                delete_after=5
+            )
+            
+            
+            
     @commands.command(aliases=["lb", "leaders"])
     @commands.cooldown(1.0, 10.0, commands.BucketType.user)
     async def leaderboard(self, ctx):
