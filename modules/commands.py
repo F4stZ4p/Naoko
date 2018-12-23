@@ -313,15 +313,25 @@ class Commands:
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def source(self, ctx):
         """
-    	Shows my source code. Code is for educational purposes only
+    	Shows my source code
     	"""
         await ctx.send(
             embed=discord.Embed(
                 timestamp=ctx.message.created_at,
                 title="Source Code",
-                description=":link: Source code can be found in **title**\n:information_source: Feel free to submit a **Pull Request**",
                 url="https://github.com/NaokoDiscordBot/Naoko",
                 color=random.randint(0x000000, 0xFFFFFF),
+                description=
+f"""
+I am created in <:python:526512892153954324> with :heart:, using:
+
+:yellow_heart: [discord.py 1.0.0a](https://github.com/Rapptz/discord.py/tree/rewrite)
+:bookmark: [asyncpg](https://github.com/MagicStack/asyncpg)
+:musical_note: [aqualink](https://github.com/nanipy/aqualink)
+:spider_web: [Quart](https://github.com/pgjones/quart)
+
+:gear: And many other **[Python Libraries](https://pypi.org/)**...
+"""
             )
             .set_thumbnail(url="https://i.imgur.com/46eHxTO.png")
             .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
