@@ -325,10 +325,10 @@ class Commands:
 f"""
 I am **created** in <:python:526512892153954324> with :heart:, using:
 
-:yellow_heart: ● [discord.py 1.0.0a](https://github.com/Rapptz/discord.py/tree/rewrite)
-:bookmark: ● [asyncpg](https://github.com/MagicStack/asyncpg)
-:musical_note: ● [aqualink](https://github.com/nanipy/aqualink)
-:spider_web: ● [Quart](https://github.com/pgjones/quart)
+:yellow_heart: [discord.py 1.0.0a](https://github.com/Rapptz/discord.py/tree/rewrite) :: Main Engine
+:bookmark: [asyncpg](https://github.com/MagicStack/asyncpg) :: Database
+:musical_note: [aqualink](https://github.com/nanipy/aqualink) :: Music
+:spider_web: [Quart](https://github.com/pgjones/quart) :: Dashboard
 
 :gear: And **many** other **[Python Libraries](https://pypi.org/)**...
 """
