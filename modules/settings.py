@@ -80,7 +80,7 @@ class Settings:
                     f":white_check_mark: | **Reset default guild prefix**",
                     delete_after=15,
                 )
-            except:
+            except BaseException:
                 await ctx.send(
                     ":question: | **No custom guild prefix was specified**",
                     delete_after=15,

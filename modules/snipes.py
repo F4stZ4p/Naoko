@@ -30,7 +30,7 @@ class Snipes:
 
         try:
             self.snipes[message.channel.id].appendleft(message)
-        except:
+        except BaseException:
             self.snipes[message.channel.id] = SnipeHistory()
             self.snipes[message.channel.id].appendleft(message)
 
@@ -50,7 +50,7 @@ class Snipes:
 
         try:
             sniped = self.snipes[channel.id][index]
-        except:
+        except BaseException:
             return await ctx.send(
                 ":warning: | **No message to snipe or index must not be greater than 5 or lower than 1**",
                 delete_after=10,

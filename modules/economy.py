@@ -44,7 +44,7 @@ class Economy:
                 )
                 .set_thumbnail(url=target.avatar_url)
             )
-        except:
+        except BaseException:
             pass
 
     @commands.command(aliases=["bal", "credits"])
@@ -63,7 +63,7 @@ class Economy:
                     delete_after=15,
                 )
             await self.bot.db.release(con)
-            
+
     @commands.command(aliases=["vb", "bonus"])
     @commands.cooldown(1.0, 86400.0, commands.BucketType.user)
     async def votebonus(self, ctx):
@@ -71,61 +71,58 @@ class Economy:
 
         async with self.bot.session.get(
             f"https://discordbots.org/api/bots/{ctx.me.id}/check?userId={ctx.author.id}",
-            
+
             headers={
                 "Authorization": self.bot.config.dbltoken
             }
 
         ) as voted:
-            
+
             voted = await voted.json()
-            
+
             if voted["voted"] == 0:
                 return await ctx.send(
                     ":x: **Sorry, you didn't vote for me**",
                     delete_after=5
                 )
-            
+
             bonus = random.randint(
                 1000, 3000
             )
-            
+
             async with self.bot.db.acquire() as con:
                 await con.execute(
                     f"UPDATE users SET money = money + {bonus} WHERE id = {ctx.author.id}"
                 )
-                
+
                 await self.bot.db.release(con)
-                
+
             await ctx.send(
                 f":package: | **You successfully claimed your {bonus} <a:bitcoin:506081804567052288> vote bonus! Thanks for voting!**",
                 delete_after=5
             )
-            
-            
-            
+
     @commands.command(aliases=["lb", "leaders"])
     @commands.cooldown(1.0, 10.0, commands.BucketType.user)
     async def leaderboard(self, ctx):
         """Shows global leaderboard"""
         async with self.bot.db.acquire() as con:
-            
+
             a = await con.fetch(
                 "SELECT * FROM users ORDER BY money DESC LIMIT 3"
             )
-            
+
             await self.bot.db.release(con)
-            
+
             await ctx.send(
                 embed=discord.Embed(
-                    title="The Richest People", 
+                    title="The Richest People",
                     color=random.randint(0x000000, 0xFFFFFF),
                     timestamp=ctx.message.created_at
                 )
                 .add_field(
-                    name="**:dizzy: Leaders**", 
-                    value=
-f"""
+                    name="**:dizzy: Leaders**",
+                    value=f"""
 :first_place: | {self.bot.get_user(a[0][0]).mention}: **{a[0][1]}** <a:bitcoin:506081804567052288>
 :second_place: | {self.bot.get_user(a[1][0]).mention}: **{a[1][1]}** <a:bitcoin:506081804567052288>
 :third_place: | {self.bot.get_user(a[2][0]).mention}: **{a[2][1]}** <a:bitcoin:506081804567052288>
@@ -139,7 +136,7 @@ f"""
                     url=self.thumbnail
                 )
             )
-    
+
     @commands.command()
     @commands.cooldown(1.0, 3600.0, commands.BucketType.user)
     async def create(self, ctx):
@@ -249,7 +246,7 @@ f"""
                             await where.send(
                                 f":arrow_forward: | **Transfer Receipt from {ctx.author}: ``{money}`` <a:bitcoin:506081804567052288>**"
                             )
-                        except:
+                        except BaseException:
                             pass
             await self.bot.db.release(con)
 

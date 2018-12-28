@@ -17,7 +17,7 @@ class Events:
                 },
                 headers={"Authorization": self.bot.config.dbltoken},
             )
-        except:
+        except BaseException:
             pass
 
     def info_box(self, g):
@@ -47,7 +47,7 @@ My name is **Naoko** and i'm **multifunctional** bot for Discord. You can view a
     async def on_guild_join(self, guild):
         try:
             await guild.system_channel.send(embed=self.generate_join_embed(guild))
-        except:
+        except BaseException:
             pass
 
         await self.update_stats()

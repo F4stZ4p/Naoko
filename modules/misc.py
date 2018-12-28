@@ -1,4 +1,7 @@
-import discord, re, random, time
+import discord
+import re
+import random
+import time
 from discord.ext import commands
 from datetime import datetime
 from discord.ext.commands.cooldowns import BucketType
@@ -85,7 +88,7 @@ class Miscellaneous:
                 .set_footer(icon_url=ctx.author.avatar_url, text="Reported at: ")
             )
             await ctx.send(":ok_hand:", delete_after=5)
-        except:
+        except BaseException:
             await ctx.send(
                 ":warning: | **Sorry, something went wrong while reporting.**"
             )
@@ -106,7 +109,7 @@ class Miscellaneous:
                 .set_footer(icon_url=ctx.author.avatar_url, text="Suggested at: ")
             )
             await ctx.send(":ok_hand:", delete_after=5)
-        except:
+        except BaseException:
             await ctx.send(
                 ":warning: | **Sorry, something went wrong while suggesting.**"
             )
@@ -138,12 +141,12 @@ class Miscellaneous:
     async def invite(self, ctx, botto: discord.User = None):
         """Invite me or any bot you want!"""
         botto = botto or ctx.me
-        
+
         if not botto.bot:
             return await ctx.send(
-                        ":bangbang: | **This user is not a bot. You can't invite them!**",
-                        delete_after=5,
-                    )
+                ":bangbang: | **This user is not a bot. You can't invite them!**",
+                delete_after=5,
+            )
 
         await ctx.send(
             embed=discord.Embed(
@@ -163,8 +166,8 @@ class Miscellaneous:
     async def choose(self, ctx, *choices: commands.clean_content):
         """Wanna choose something? I can help you!"""
         await ctx.send(
-                      f":information_source: | {ctx.author.mention}, my choice is {random.choice(choices)}"
-              )
+            f":information_source: | {ctx.author.mention}, my choice is {random.choice(choices)}"
+        )
 
     @commands.command()
     @commands.cooldown(1.0, 1.0, commands.BucketType.user)
@@ -180,7 +183,7 @@ class Miscellaneous:
                     lambda e: e.name.lower() == emoji.lower(), self.bot.emojis
                 )
             )
-        except:
+        except BaseException:
             await ctx.send(
                 f":warning: | **Sorry, no matches found for `{emoji.lower()}`**",
                 delete_after=5,
@@ -223,7 +226,7 @@ class Miscellaneous:
                         value="Analyzed **150** messages",
                     )
                 )
-            except:
+            except BaseException:
                 await ctx.send(":warning: | **An error occured**", delete_after=5)
 
     @commands.command()
@@ -242,7 +245,7 @@ class Miscellaneous:
         else:
             try:
                 await ctx.message.delete()
-            except:
+            except BaseException:
                 pass
 
             m = await ctx.send(

@@ -33,15 +33,13 @@ class Fun:
         if user is None:
             embed = discord.Embed(color=ctx.author.top_role.colour)
             embed.set_footer(
-                text=f"{ctx.author}'s highest role color is: {ctx.author.top_role.colour}"
-            )
+                text=f"{ctx.author}'s highest role color is: {ctx.author.top_role.colour}")
             await ctx.send(embed=embed)
         else:
             try:
                 embed = discord.Embed(color=user.top_role.colour)
                 embed.set_footer(
-                    text=f"{user}'s highest role color is: {user.top_role.colour}"
-                )
+                    text=f"{user}'s highest role color is: {user.top_role.colour}")
                 await ctx.send(embed=embed)
             except Exception:
                 pass
@@ -52,8 +50,7 @@ class Fun:
         """ RIPs a user """
         rip = discord.Embed(color=random.randint(0x000000, 0xFFFFFF))
         rip.set_image(
-            url=f"http://www.tombstonebuilder.com/generate.php?top1={quote(text)}&top2=&top3=&top4=&sp="
-        )
+            url=f"http://www.tombstonebuilder.com/generate.php?top1={quote(text)}&top2=&top3=&top4=&sp=")
         await ctx.send(embed=rip)
 
     @commands.command(pass_context=True)
@@ -74,10 +71,10 @@ class Fun:
     @commands.cooldown(1.0, 10.0, commands.BucketType.user)
     async def profile(self, ctx, userfoo: discord.Member = None):
         """ Generates your profile card """
-        if userfoo == None:
+        if userfoo is None:
             profembed = discord.Embed(
-                color=ctx.author.top_role.colour, title=f"{ctx.author}'s profile card"
-            )
+                color=ctx.author.top_role.colour,
+                title=f"{ctx.author}'s profile card")
             profembed.add_field(
                 name=":comet: ``Status:``",
                 value=f"``{ctx.author.status}``",
@@ -89,8 +86,9 @@ class Fun:
                 inline=True,
             )
             profembed.add_field(
-                name=":robot: ``Is bot:``", value=f"``{ctx.author.bot}``", inline=True
-            )
+                name=":robot: ``Is bot:``",
+                value=f"``{ctx.author.bot}``",
+                inline=True)
             profembed.add_field(
                 name=":tophat: ``Created at:``",
                 value=f"``{ctx.author.created_at}``",
@@ -115,19 +113,21 @@ class Fun:
             await ctx.send(embed=profembed)
         else:
             profembed = discord.Embed(
-                color=userfoo.top_role.colour, title=f"{userfoo}'s profile card"
-            )
+                color=userfoo.top_role.colour,
+                title=f"{userfoo}'s profile card")
             profembed.add_field(
-                name=":comet: ``Status:``", value=f"``{userfoo.status}``", inline=True
-            )
+                name=":comet: ``Status:``",
+                value=f"``{userfoo.status}``",
+                inline=True)
             profembed.add_field(
                 name=":video_game: ``Playing:``",
                 value=f"``{userfoo.activity}``",
                 inline=True,
             )
             profembed.add_field(
-                name=":robot: ``Is bot:``", value=f"``{userfoo.bot}``", inline=True
-            )
+                name=":robot: ``Is bot:``",
+                value=f"``{userfoo.bot}``",
+                inline=True)
             profembed.add_field(
                 name=":tophat: ``Created at:``",
                 value=f"``{userfoo.created_at}``",
@@ -156,10 +156,12 @@ class Fun:
     async def reverse(self, ctx, *, texttoreverse):
         """ Gives you reversed text """
         encodes = discord.Embed(color=random.randint(0x000000, 0xFFFFFF))
-        encodes.add_field(name="Reversed:", value=f"```{texttoreverse[::-1]}```")
+        encodes.add_field(
+            name="Reversed:",
+            value=f"```{texttoreverse[::-1]}```")
         encodes.set_footer(
-            text=f"Requested by: {ctx.author}", icon_url=f"{ctx.author.avatar_url}"
-        )
+            text=f"Requested by: {ctx.author}",
+            icon_url=f"{ctx.author.avatar_url}")
         await ctx.send(embed=encodes)
 
     @commands.command(pass_context=True, aliases=["hb"])
@@ -176,8 +178,8 @@ class Fun:
             value="**[URL to Hastebin](https://hastebin.com/{})**".format(post["key"]),
         )
         hastem.set_footer(
-            text=f"Requested by: {ctx.author}", icon_url=f"{ctx.author.avatar_url}"
-        )
+            text=f"Requested by: {ctx.author}",
+            icon_url=f"{ctx.author.avatar_url}")
         await ctx.send(embed=hastem)
 
     @commands.command(pass_context=True, aliases=["mb"])
@@ -194,8 +196,8 @@ class Fun:
             value="**[URL to Mystbin](http://mystb.in/{})**".format(post["key"]),
         )
         mystem.set_footer(
-            text=f"Requested by: {ctx.author}", icon_url=f"{ctx.author.avatar_url}"
-        )
+            text=f"Requested by: {ctx.author}",
+            icon_url=f"{ctx.author.avatar_url}")
         await ctx.send(embed=mystem)
 
     @commands.command(pass_context=True, aliases=["cat"])
@@ -273,8 +275,10 @@ class Fun:
                         length=1,
                     ).paginate(ctx)
 
-        except:
-            emdexsssssss = discord.Embed(color=random.randint(0x000000, 0xFFFFFF))
+        except BaseException:
+            emdexsssssss = discord.Embed(
+                color=random.randint(
+                    0x000000, 0xFFFFFF))
             emdexsssssss.set_footer(
                 text=f"API error or no weather results found for {location}.",
                 icon_url=ctx.author.avatar_url,
@@ -288,9 +292,9 @@ class Fun:
         embed = discord.Embed(color=1_507_393)
         embed.set_image(
             url="https://raw.githubusercontent.com/F4stZ4p/resources-for-discord-bot/master/{}.png".format(
-                random.randint(1, 6)
-            )
-        )
+                random.randint(
+                    1,
+                    6)))
         await ctx.send(embed=embed)
 
     @commands.command(pass_context=True, aliases=["btc"])
@@ -317,8 +321,7 @@ class Fun:
                         color=0xFF9900,
                     )
                     embedbtc.set_thumbnail(
-                        url="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/bitcoin-icon.png"
-                    )
+                        url="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/bitcoin-icon.png")
                     embedbtc.add_field(
                         name="Last 15 minutes",
                         value=f"**{round(data[currency.upper()].get('15m'))} {data[currency.upper()].get('symbol')}**",
@@ -345,7 +348,7 @@ class Fun:
                     )
                     await ctx.send(embed=embedbtc)
 
-            except:
+            except BaseException:
                 emdexs = discord.Embed(color=0xFF9900)
                 emdexs.set_footer(
                     text=f"No results found for currency - {currency}",
@@ -368,10 +371,9 @@ class Fun:
                     value=f"**[Link](https://youtube.com/watch/{data['vid']})**",
                 )
                 embedyt.set_image(
-                    url=f"https://img.youtube.com/vi/{data['vid']}/hqdefault.jpg"
-                )
+                    url=f"https://img.youtube.com/vi/{data['vid']}/hqdefault.jpg")
                 await ctx.send(embed=embedyt)
-        except:
+        except BaseException:
             emdexs = discord.Embed(color=0x170041)
             emdexs.set_footer(
                 text="API is unavailable now. Try again later!",
@@ -399,7 +401,7 @@ class Fun:
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def bigmoji(self, ctx, *, emoji):
         """ Reveals an emoji """
-        emoji = re.findall("(\d+)", emoji)[0]
+        emoji = re.findall(r"(\d+)", emoji)[0]
         embedemo = discord.Embed(color=0x36393E, title=f"Emoji: {emoji}")
         embedemo.add_field(
             name="**Download link**",
@@ -407,8 +409,8 @@ class Fun:
         )
         embedemo.set_image(url=f"https://cdn.discordapp.com/emojis/{emoji}")
         embedemo.set_footer(
-            text=f"Requested by: {ctx.author.name}", icon_url=ctx.author.avatar_url
-        )
+            text=f"Requested by: {ctx.author.name}",
+            icon_url=ctx.author.avatar_url)
         embedemo.timestamp = ctx.message.created_at
         await ctx.send(embed=embedemo)
 
@@ -481,8 +483,7 @@ class Fun:
                         icon_url=ctx.guild.icon_url,
                     )
                     embednew.set_footer(
-                        text=f'Trivia timed out. The correct answer was {data["results"][0].get("correct_answer")}!'
-                    )
+                        text=f'Trivia timed out. The correct answer was {data["results"][0].get("correct_answer")}!')
                     await msg.edit(embed=embednew, delete_after=5)
 
                 else:
@@ -550,7 +551,7 @@ class Fun:
                         icon_url=ctx.author.avatar_url,
                     )
                 )
-        except:
+        except BaseException:
             await ctx.send(
                 ":warning: | **An error has occured. Please report this to developer.**"
             )
@@ -571,7 +572,7 @@ class Fun:
                     length=5,
                     fmt="``",
                 ).paginate(ctx)
-            except:
+            except BaseException:
                 await ctx.send(
                     f":warning: | **No users found with discriminator #{ctx.author.discriminator} or it is invalid (ex. 0001)**",
                     delete_after=10,
@@ -587,7 +588,7 @@ class Fun:
                     length=5,
                     fmt="``",
                 ).paginate(ctx)
-            except:
+            except BaseException:
                 await ctx.send(
                     f":warning: | **No users found with discriminator #{discrim} or it is invalid (ex. 0001)**".replace(
                         "@", "@\u200b"
@@ -671,7 +672,7 @@ class Fun:
                 )
                 .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
             )
-        except:
+        except BaseException:
             pass
 
     @commands.command(aliases=["saucefinder"])

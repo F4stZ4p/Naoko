@@ -36,7 +36,7 @@ class Moderator:
                 reason=f"{ctx.author}: {reason if len(reason) <= 100 else f'{reason[:100]}...'}",
             )
             await ctx.send(embed=embedkick)
-        except:
+        except BaseException:
             await ctx.send(
                 "**:x: Sorry, I am missing permissions to do this!**", delete_after=10
             )
@@ -65,7 +65,7 @@ class Moderator:
                 reason=f"{ctx.author}: {reason if len(reason) <= 100 else f'{reason[:100]}...'}",
             )
             await ctx.send(embed=embedban)
-        except:
+        except BaseException:
             await ctx.send(
                 "**:x: Sorry, I am missing permissions to do this!**", delete_after=10
             )
@@ -94,7 +94,7 @@ class Moderator:
                 reason=f"{ctx.author}: {reason if len(reason) <= 100 else f'{reason[:100]}...'}",
             )
             await ctx.send(embed=embedunban)
-        except:
+        except BaseException:
             await ctx.send(
                 "**:x: Sorry, I am missing permissions to do this!**", delete_after=10
             )
@@ -117,7 +117,7 @@ class Moderator:
                     f"**I have deleted ``{count}`` messages for you! <a:rem:466165862710247424>**",
                     delete_after=10,
                 )
-            except:
+            except BaseException:
                 await ctx.send(
                     "**:x: Sorry, I am missing permissions to do this or messages are too old**",
                     delete_after=10,
@@ -132,7 +132,7 @@ class Moderator:
             await ctx.channel.set_permissions(
                 user, send_messages=False, reason=f"{ctx.author}: {reason}"
             )
-        except:
+        except BaseException:
             await ctx.send(":thumbsdown:")
         else:
             await ctx.send(":ok_hand:")
@@ -146,7 +146,7 @@ class Moderator:
             await ctx.channel.set_permissions(
                 user, send_messages=True, reason=f"{ctx.author}: {reason}"
             )
-        except:
+        except BaseException:
             await ctx.send(":thumbsdown:")
         else:
             await ctx.send(":ok_hand:")

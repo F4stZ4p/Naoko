@@ -1,4 +1,15 @@
-import discord, asyncio, re, os, psutil, traceback, time, gc, random, aiohttp, asyncpg, sys
+import discord
+import asyncio
+import re
+import os
+import psutil
+import traceback
+import time
+import gc
+import random
+import aiohttp
+import asyncpg
+import sys
 import aqualink
 from datetime import datetime
 from discord.ext import commands
@@ -29,7 +40,6 @@ class Naoko(commands.AutoShardedBot):
         self.patrons = []
         self.launch_time = datetime.utcnow()
         self.startup_extensions = (
-            "modules.music",
             "modules.snipes",
             "modules.image",
             "modules.events",
@@ -60,7 +70,7 @@ class Naoko(commands.AutoShardedBot):
             return commands.when_mentioned_or(
                 self.all_prefixes[message.guild.id], "n."
             )(self, message)
-        except:
+        except BaseException:
             return commands.when_mentioned_or("n.")(self, message)
 
     def __repr__(self):
@@ -112,12 +122,12 @@ class Naoko(commands.AutoShardedBot):
 
     async def _get_owner(self):
         self.owner = (await self.application_info()).owner
-        
+
     async def _start_aqualink(self):
-        await self.aqualink.connect(password="adrianisgay12345", 
-                                    ws_url="ws://localhost:2333", 
+        await self.aqualink.connect(password="adrianisgay12345",
+                                    ws_url="ws://localhost:2333",
                                     rest_url="http://localhost:2333"
-                                   )
+                                    )
 
     async def on_ready(self):
         self.loop.create_task(self.presence())
@@ -128,7 +138,7 @@ class Naoko(commands.AutoShardedBot):
         await self.load_prefixes()
         await self.load_patrons()
         await self._fetch_latest_commit()
-        await self._start_aqualink()
+        # await self._start_aqualink()
 
     async def on_command(self, ctx):
         if ctx.author.id in self.patrons:
@@ -136,12 +146,12 @@ class Naoko(commands.AutoShardedBot):
 
         try:
             self.usage[ctx.command.name] += 1
-        except:
+        except BaseException:
             self.usage[ctx.command.name] = 1
 
         logger.superlog(
-            f"[ COMMAND ] {ctx.author}: {ctx.message.content}", ctx.message.guild
-        )
+            f"[ COMMAND ] {ctx.author}: {ctx.message.content}",
+            ctx.message.guild)
 
     async def on_message(self, message):
         if message.author.bot:
@@ -161,7 +171,7 @@ class Naoko(commands.AutoShardedBot):
                                 message.content
                             ]
                         )
-                except:
+                except BaseException:
                     pass
 
         await self.process_commands(message)

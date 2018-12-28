@@ -62,26 +62,27 @@ class Commands:
                         if cog.thumbnail
                         else "https://i.imgur.com/SDYOTER.png"
                     )
-                except:
+                except BaseException:
                     pass
 
                 category = f"**<:cog:472833323937300480> {category}**\n*<:pointer:472836108556697611> {inspect.getdoc(cog)}*"
             commands = ", ".join([c.qualified_name for c in commands])
             embed = (
                 discord.Embed(
-                    color=random.randint(0x000000, 0xFFFFFF),
+                    color=random.randint(
+                        0x000000,
+                        0xFFFFFF),
                     title=f"{ctx.bot.user.display_name} Commands",
                     description=f"{category}",
-                )
-                .set_footer(
+                ) .set_footer(
                     text=f"Type {ctx.prefix}help <command> for more help".replace(
-                        ctx.me.mention, "@Naoko "
-                    ),
+                        ctx.me.mention,
+                        "@Naoko "),
                     icon_url=ctx.author.avatar_url,
-                )
-                .add_field(name="**Commands:**", value=f"``{commands}``")
-                .set_thumbnail(url=thumbnail)
-            )
+                ) .add_field(
+                    name="**Commands:**",
+                    value=f"``{commands}``") .set_thumbnail(
+                    url=thumbnail))
             pages.append(embed)
         await NaokoPaginator(
             extras=sorted(pages, key=lambda d: d.description)
@@ -111,7 +112,7 @@ class Commands:
                     else "https://i.imgur.com/SDYOTER.png"
                 )
             )
-        except:
+        except BaseException:
             await ctx.send(
                 f":x: | **Command or category not found. Use {ctx.prefix}help**",
                 delete_after=10,
@@ -290,7 +291,7 @@ class Commands:
         """
         try:
             m = await ctx.channel.get_message(messageid)
-        except:
+        except BaseException:
             await ctx.send(
                 "<:Error:501773759217401856> | **Message not found**", delete_after=5
             )
@@ -313,16 +314,15 @@ class Commands:
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
     async def source(self, ctx):
         """
-    	Shows my source code
-    	"""
+        Shows my source code
+        """
         await ctx.send(
             embed=discord.Embed(
                 timestamp=ctx.message.created_at,
                 title="Source Code",
                 url="https://github.com/NaokoDiscordBot/Naoko",
                 color=random.randint(0x000000, 0xFFFFFF),
-                description=
-f"""
+                description=f"""
 I am **created** in <:python:526512892153954324> with :heart:, using:
 
 :yellow_heart: [discord.py 1.0.0a](https://github.com/Rapptz/discord.py/tree/rewrite)
@@ -336,7 +336,7 @@ I am **created** in <:python:526512892153954324> with :heart:, using:
             .set_thumbnail(url="https://i.imgur.com/46eHxTO.png")
             .set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
         )
-        
+
     @commands.command(aliases=["ss", "webscreen", "capture"])
     @nsfw()
     @commands.cooldown(1.0, 5.0, commands.BucketType.user)
@@ -347,7 +347,7 @@ I am **created** in <:python:526512892153954324> with :heart:, using:
         """
         async with ctx.typing():
             async with self.bot.session.post(
-                "http://magmachain.herokuapp.com/api/v1", 
+                "http://magmachain.herokuapp.com/api/v1",
                 headers={"website": website}
             ) as r:
                 try:
@@ -370,12 +370,12 @@ I am **created** in <:python:526512892153954324> with :heart:, using:
                         )
 
                     )
-                
-                except:
+
+                except BaseException:
                     await ctx.send(
                         "<:Error:501773759217401856> | **Failed to snapshot. Check your URL or try again**",
                         delete_after=5
-                        )
+                    )
 
 
 def setup(bot):

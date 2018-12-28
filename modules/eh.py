@@ -13,11 +13,8 @@ class CommandErrorHandler:
         bot.on_command_error = self._on_command_error
 
     async def _on_command_error(self, ctx, error, bypass=False):
-        if (
-            hasattr(ctx.command, "on_error")
-            or (ctx.command and hasattr(ctx.cog, f"_{ctx.command.cog_name}__error"))
-            and not bypass
-        ):
+        if (hasattr(ctx.command, "on_error") or (ctx.command and hasattr(
+                ctx.cog, f"_{ctx.command.cog_name}__error")) and not bypass):
             return
 
         if isinstance(error, commands.CommandNotFound):
@@ -89,9 +86,9 @@ class CommandErrorHandler:
             )
 
         elif isinstance(error, commands.CheckFailure):
-            if type(error) == checks.naoko_checks.OwnerOnly:
+            if isinstance(error, checks.naoko_checks.OwnerOnly):
                 pass
-            elif type(error) == checks.naoko_checks.NSFWOnly:
+            elif isinstance(error, checks.naoko_checks.NSFWOnly):
                 await ctx.send(
                     embed=discord.Embed(
                         color=random.randint(0x000000, 0xFFFFFF),
@@ -104,7 +101,7 @@ class CommandErrorHandler:
                     .set_footer(text=ctx.author, icon_url=ctx.author.avatar_url),
                     delete_after=10,
                 )
-            elif type(error) == checks.naoko_checks.PatronOnly:
+            elif isinstance(error, checks.naoko_checks.PatronOnly):
                 await ctx.send(
                     embed=discord.Embed(
                         color=random.randint(0x000000, 0xFFFFFF),
@@ -117,7 +114,7 @@ class CommandErrorHandler:
                     .set_footer(text=ctx.author, icon_url=ctx.author.avatar_url),
                     delete_after=10,
                 )
-            elif type(error) == checks.naoko_checks.NeedsAccount:
+            elif isinstance(error, checks.naoko_checks.NeedsAccount):
                 await ctx.send(
                     embed=discord.Embed(
                         color=random.randint(0x000000, 0xFFFFFF),

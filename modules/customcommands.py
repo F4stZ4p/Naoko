@@ -23,7 +23,8 @@ class CustomCommands:
         async with self.bot.db.acquire() as con:
             commands = await con.fetch("SELECT * FROM customcommands")
             for row in commands:
-                self.commands.setdefault(row[0], {"": ""}).update(**{row[1]: row[2]})
+                self.commands.setdefault(
+                    row[0], {"": ""}).update(**{row[1]: row[2]})
         await self.bot.db.release(con)
 
     @commands.group(invoke_without_command=True)
@@ -100,7 +101,7 @@ class CustomCommands:
                     f":information_source: | **Custom command `{commandname}` was successfully removed**",
                     delete_after=5,
                 )
-            except:
+            except BaseException:
                 await ctx.send(
                     f":warning: | **Custom command `{commandname}` does not exist**",
                     delete_after=5,
@@ -121,13 +122,13 @@ class CustomCommands:
                     f":information_source: | **All custom commands were successfully removed**",
                     delete_after=5,
                 )
-            except:
+            except BaseException:
                 await ctx.send(
                     f":warning: | **No custom commands in this server**", delete_after=5
                 )
             try:
                 del self.commands[ctx.guild.id]
-            except:
+            except BaseException:
                 pass
         await self.bot.db.release(con)
 
@@ -143,7 +144,7 @@ class CustomCommands:
                 colour=random.randint(0x000000, 0xFFFFFF),
                 title=f"{ctx.guild} Custom Commands",
             ).paginate(ctx)
-        except:
+        except BaseException:
             await ctx.send(
                 f":warning: | **No custom commands in this server**", delete_after=5
             )
@@ -159,7 +160,7 @@ class CustomCommands:
                     "DELETE FROM customcommands WHERE guildid = $1", guild.id
                 )
                 del self.commands[guild.id]
-            except:
+            except BaseException:
                 pass
         await self.bot.db.release(con)
 

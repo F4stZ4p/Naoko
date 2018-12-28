@@ -193,7 +193,7 @@ class TicTacToe:
     async def _remove_reaction(self, react, user):
         try:
             await self.base.remove_reaction(react, user)
-        except:
+        except BaseException:
             pass
 
     def get_rand_move(self):
@@ -201,7 +201,7 @@ class TicTacToe:
             self.field[
                 random.choice([f for f in range(9) if self.field[f] == self.blank])
             ] = self.bot_sign
-        except:
+        except BaseException:
             pass
 
     async def main(self, playerone=None, playertwo=None):
@@ -211,7 +211,8 @@ class TicTacToe:
         if playertwo is None:
             playertwo = self.ctx.me
 
-        self.whoturns[self.ctx.channel.id] = random.choice((playerone, playertwo)).id
+        self.whoturns[self.ctx.channel.id] = random.choice(
+            (playerone, playertwo)).id
         self.base = await self.ctx.send(
             embed=discord.Embed(color=0xFC80B2)
             .add_field(
@@ -336,7 +337,9 @@ class Games:
                 return False
             return True
 
-        if self.games.get(ctx.channel.id) or self.selecting.get(ctx.channel.id):
+        if self.games.get(
+                ctx.channel.id) or self.selecting.get(
+                ctx.channel.id):
             return await ctx.send(
                 ":warning: | **Other game is already running here. Try another channel**",
                 delete_after=5,
@@ -357,7 +360,7 @@ class Games:
         for react in self.buttons:
             try:
                 await self.base.add_reaction(str(react))
-            except:
+            except BaseException:
                 pass
 
         try:
@@ -376,7 +379,7 @@ class Games:
                     try:
                         await self.base.delete()
                         del self.selecting[ctx.channel.id]
-                    except:
+                    except BaseException:
                         continue
 
                     game = gameclass(ctx)
@@ -387,7 +390,7 @@ class Games:
                 elif control == "2":
                     try:
                         await self.base.delete()
-                    except:
+                    except BaseException:
                         continue
 
                     try:
@@ -408,7 +411,7 @@ class Games:
                         for react in self._controls:
                             try:
                                 await inv.add_reaction(str(react))
-                            except:
+                            except BaseException:
                                 pass
                         reaction, user = await self.bot.wait_for(
                             "reaction_add", check=_reaction_check, timeout=30
@@ -419,7 +422,7 @@ class Games:
                             try:
                                 await inv.delete()
                                 del self.selecting[ctx.channel.id]
-                            except:
+                            except BaseException:
                                 continue
 
                             game = gameclass(ctx)
@@ -431,7 +434,7 @@ class Games:
                             try:
                                 await inv.delete()
                                 del self.selecting[ctx.channel.id]
-                            except:
+                            except BaseException:
                                 continue
 
                             await ctx.send(
@@ -439,7 +442,7 @@ class Games:
                                 delete_after=5,
                             )
 
-                    except:
+                    except BaseException:
                         await inv.delete()
                         await ctx.send(
                             f":clock2: | **Timed out. No one wanted to join your game, {ctx.author.mention} :cry:**",
@@ -447,7 +450,7 @@ class Games:
                         )
                         try:
                             del self.selecting[ctx.channel.id]
-                        except:
+                        except BaseException:
                             pass
 
                 elif control == "stop":
@@ -458,7 +461,7 @@ class Games:
                         )
                         await self.base.delete()
                         del self.selecting[ctx.channel.id]
-                    except:
+                    except BaseException:
                         pass
 
         except KeyError:

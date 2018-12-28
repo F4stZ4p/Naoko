@@ -65,7 +65,7 @@ class Search:
                         icon_url=ctx.author.avatar_url,
                     )
                     await ctx.send(embed=embed)
-            except:
+            except BaseException:
                 await ctx.send(f":warning: | **No results found for ``{query}``**")
 
     @search.command()
@@ -113,7 +113,7 @@ class Search:
                         icon_url=ctx.author.avatar_url,
                     )
                     await ctx.send(embed=embed)
-            except:
+            except BaseException:
                 await ctx.send(f":warning: | **No results found for ``{query}``**")
 
     @search.command()
@@ -148,11 +148,11 @@ class Search:
                             await ctx.send(
                                 f':white_check_mark: | **Uploaded. URL: https://hastebin.com/{post["key"]}**'
                             )
-                    except:
+                    except BaseException:
                         await ctx.send(
                             ":warning: | **Uploading to hastebin failed. Please report this issue to developer.**"
                         )
-            except:
+            except BaseException:
                 await ctx.send(
                     f":warning: | **No results found for ``{artist}`` - ``{song}``**"
                 )
@@ -172,14 +172,12 @@ class Search:
                     f"https://{language.lower()}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles={search}&redirects=1&indexpageids"
                 ) as resp:
                     data = await resp.json()
-            except:
+            except BaseException:
                 await ctx.send(
                     f":warning: | **Invalid language provided (`{language.lower()}`). Example: ru - Russian; en - English**"
                 )
-            if (
-                data["query"]["pages"][data["query"]["pageids"][0]].get("extract")
-                is None
-            ):
+            if (data["query"]["pages"][data["query"]
+                                       ["pageids"][0]].get("extract") is None):
                 await ctx.send(
                     f":warning: | **No results found for `{search}` in `{language}` language.**"
                 )
@@ -214,7 +212,7 @@ class Search:
                             await ctx.send(
                                 f':white_check_mark: | **Uploaded. URL: https://hastebin.com/{post["key"]}**'
                             )
-                    except:
+                    except BaseException:
                         await ctx.send(
                             ":warning: | **Uploading to hastebin failed. Please report this issue to developer.**"
                         )
@@ -239,13 +237,11 @@ class Search:
         embeds = {}
 
         if resp_json["AbstractURL"] != "":
-            embeds[
-                f'Abstract: {resp_json["Heading"]}' f' ({resp_json["AbstractSource"]})'
-            ] = {
-                "image": resp_json["Image"],
-                "desc": f'{resp_json.get("AbstractText", "")}\n\n'
-                f'{resp_json["AbstractURL"]}',
-            }
+            embeds[f'Abstract: {resp_json["Heading"]}'
+                   f' ({resp_json["AbstractSource"]})'] = {"image": resp_json["Image"],
+                                                           "desc": f'{resp_json.get("AbstractText", "")}\n\n'
+                                                           f'{resp_json["AbstractURL"]}',
+                                                           }
 
         if resp_json["Definition"] != "":
             embeds["Definition"] = {

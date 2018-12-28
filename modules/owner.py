@@ -10,7 +10,8 @@ import re
 from platform import python_version
 import gc
 import copy
-import os, sys
+import os
+import sys
 
 # to expose to the eval command
 import datetime
@@ -32,7 +33,11 @@ class Admin:
         return content.strip("` \n")
 
     @owner()
-    @commands.command(pass_context=True, hidden=True, name="eval", aliases=["evaluate"])
+    @commands.command(
+        pass_context=True,
+        hidden=True,
+        name="eval",
+        aliases=["evaluate"])
     async def _eval(self, ctx, *, body: str):
         env = {
             "self": self.bot,
@@ -103,7 +108,7 @@ class Admin:
                     "a:loading:451342728077508608", member=ctx.me
                 )
                 await ctx.message.add_reaction("naokotick:447494238872141827")
-            except:
+            except BaseException:
                 pass
 
             if ret is None:
@@ -141,11 +146,11 @@ class Admin:
     @commands.command(hidden=True, aliases=["die"])
     async def logout(self, ctx):
         embed = discord.Embed(color=1_507_393)
-        embed.add_field(
-            name="Naoko logout", value="I've successfully logged out from Discord."
-        )
+        embed.add_field(name="Naoko logout",
+                        value="I've successfully logged out from Discord.")
         embed.set_footer(
-            text="Command requested by {}".format(ctx.author),
+            text="Command requested by {}".format(
+                ctx.author),
             icon_url="https://raw.githubusercontent.com/F4stZ4p/resources-for-discord-bot/master/key.ico",
         )
         await ctx.channel.send(embed=embed)
@@ -187,7 +192,7 @@ class Admin:
             await user.send(
                 f"**{user.mention}**, **{ctx.author}** blocked you from using the bot for: **{reason}**"
             )
-        except:
+        except BaseException:
             await ctx.send(":warning: | **Unable to send DMs to specified user.**")
         await ctx.send(":ok_hand:")
 
@@ -199,7 +204,7 @@ class Admin:
             await user.send(
                 f"**{user.mention}**, **{ctx.author}** unblocked you from using the bot. Don't abuse the bot again or you will get blocked **permanently**."
             )
-        except:
+        except BaseException:
             await ctx.send(":warning: | **Unable to send DMs to specified user.**")
         await ctx.send(":ok_hand:")
 
@@ -298,7 +303,7 @@ class Admin:
                 .add_field(name="**Done**", value=f"```BAT\n{b}```")
                 .set_footer(text="Action done at:", icon_url=ctx.me.avatar_url)
             )
-        except:
+        except BaseException:
             try:
                 async with self.bot.session.post(
                     "https://hastebin.com/documents", data=b
@@ -314,7 +319,7 @@ class Admin:
                         )
                         .set_footer(text="Action done at:", icon_url=ctx.me.avatar_url)
                     )
-            except:
+            except BaseException:
                 await emb.edit(
                     embed=discord.Embed(
                         color=0x67D655, timestamp=ctx.message.created_at
@@ -353,7 +358,7 @@ class Admin:
                     )
                     .set_footer(text="Action done at:", icon_url=ctx.me.avatar_url)
                 )
-        except:
+        except BaseException:
             await ctx.send(":warning | **Uploading failed. Try textfile or default.**")
         del b
 
@@ -372,7 +377,7 @@ class Admin:
             b = io.BytesIO(b.encode("utf-8"))
             try:
                 await emb.delete()
-            except:
+            except BaseException:
                 pass
             await ctx.send(
                 embed=discord.Embed(color=0x67D655, timestamp=ctx.message.created_at)
@@ -419,7 +424,9 @@ class Admin:
         except (AttributeError, ImportError) as e:
             embed = discord.Embed(color=1_507_393)
             embed.set_footer(
-                text="\n{}: {}\n".format(type(e).__name__, str(e)),
+                text="\n{}: {}\n".format(
+                    type(e).__name__,
+                    str(e)),
                 icon_url="https://raw.githubusercontent.com/F4stZ4p/resources-for-discord-bot/master/error.ico",
             )
             await ctx.send(embed=embed, delete_after=10)

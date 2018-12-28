@@ -80,7 +80,7 @@ class NSFW:
     async def _neko(self, ctx, *, tag: str = None):
         """Gives you random neko picture. Channel must be NSFW to use this command. Leave the tag field empty to randomize neko.
             ---
-            Tags are: feet, yuri, trap, futanari, hololewd, lewdkemo, solog, feetg, 
+            Tags are: feet, yuri, trap, futanari, hololewd, lewdkemo, solog, feetg,
             cum, erokemo, les, wallpaper, lewdk, ngif, meow, tickle, lewd, feed, gecg,
             eroyuri, eron, cum_jpg, bj, nsfw_neko_gif, solo, kemonomimi, nsfw_avatar,
             gasm, poke, anal, slap, hentai, avatar, erofeet, holo, keta, blowjob, pussy,
@@ -105,10 +105,10 @@ class NSFW:
                 )
                 embedneko.set_image(url=f'{data.get("url")}')
                 embedneko.set_footer(
-                    text=f"Requested by: {ctx.author}", icon_url=ctx.author.avatar_url
-                )
+                    text=f"Requested by: {ctx.author}",
+                    icon_url=ctx.author.avatar_url)
                 await ctx.send(embed=embedneko)
-        except:
+        except BaseException:
             embedneko = discord.Embed(
                 color=random.randint(0x000000, 0xFFFFFF),
                 timestamp=ctx.message.created_at,
@@ -134,7 +134,7 @@ class NSFW:
                 data = await resp.json()
                 try:
                     data["list"][0].get("word")
-                except:
+                except BaseException:
                     embederr = discord.Embed(color=0x1F2439)
                     embederr.set_footer(
                         text=f"No results found for {urbanword}.",
@@ -180,7 +180,7 @@ class NSFW:
                                 icon_url=ctx.author.avatar_url,
                             )
                             await ctx.send(embed=emberrr)
-        except:
+        except BaseException:
             emdexs = discord.Embed(color=0x1F2439)
             emdexs.set_footer(
                 text="API is unavailable now. Try again later!",
@@ -196,8 +196,10 @@ class NSFW:
         myemojis = [e.id for e in self.bot.emojis]
         myemojis = random.sample(myemojis, 20)
         embed = discord.Embed(
-            color=random.randint(0x000000, 0xFFFFFF), title="Emoji Test (may be NSFW)"
-        )
+            color=random.randint(
+                0x000000,
+                0xFFFFFF),
+            title="Emoji Test (may be NSFW)")
         msg = await ctx.send(embed=embed)
         for emoji in myemojis:
             await msg.add_reaction(self.bot.get_emoji(emoji))

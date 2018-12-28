@@ -14,7 +14,7 @@ class ImageModule:
 
     def __init__(self, bot):
         self.bot = bot
-        
+
         self._font_path = f"{self.bot.path}/fonts/Azoft-Sans.ttf"
         self.thumbnail = "https://i.imgur.com/mb1sg1b.png"
 
@@ -116,7 +116,7 @@ class ImageModule:
                     content=f"<:Ok:501773759011749898> | **Generated for {ctx.author.mention}**",
                     file=discord.File(filename=f"{member.name}.png", fp=final_buffer),
                 )
-        except:
+        except BaseException:
             await ctx.send(
                 f"<:Error:501773759217401856> | **Please, check the color (`{color}` is not correct, for example `#170041` is correct)**",
                 delete_after=15,

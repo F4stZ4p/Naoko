@@ -35,8 +35,8 @@ class Space:
 
                 if not cont["url"].endswith(("gif", "png", "jpg")):
                     embed.add_field(
-                        name="**🔴 Watch**", value=f"**[➢ Watch this!]({cont['url']})**"
-                    )
+                        name="**🔴 Watch**",
+                        value=f"**[➢ Watch this!]({cont['url']})**")
                 else:
                     embed.set_image(url=cont["url"])
 
