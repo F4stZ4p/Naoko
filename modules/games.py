@@ -2,7 +2,6 @@ import discord
 import asyncio
 import random
 from discord.ext import commands
-from checks.naoko_checks import *
 
 
 class TicTacToe:
