@@ -298,7 +298,7 @@ class TicTacToe:
             await self.regather_turn(playerone, playertwo)
 
 
-class Games:
+class Games(commands.Cog):
     """Play with me~"""
 
     def __init__(self, bot):
