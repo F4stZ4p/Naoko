@@ -2,7 +2,7 @@
 
     <h1 align="center">Naoko - The Discord Bot</h1>
     <p align="center">
-        <a href="https://naokobot.github.io"><img width="250" src="https://i.imgur.com/QYHafPM.png"/></a>
+        <a href="https://naoko-butt-is-me.ga"><src="https://i.imgur.com/FZ2sgV0.jpg"/></a>
     </p>
     
    <p align="center">
@@ -12,12 +12,6 @@
         </a>
         <a href="https://patreon.com/F4stZ4p">
             <img src="https://img.shields.io/badge/Donate-on%20Patreon-F96854.svg"/>
-        </a>
-        <a href="https://python.org">
-            <img src="https://img.shields.io/pypi/pyversions/Django.svg"/>
-        </a>
-        <a href="https://github.com/ambv/black">
-            <img src="https://img.shields.io/badge/code%20style-black-000000.svg">
         </a>
 
     </p>
@@ -33,8 +27,3 @@
            <li>Music commands</li>
            <li>Custom commands and more!</li>
        </ul>
-       
-   <h4>You can also vote for Naoko on Discord Bot List</h4>
-   <a href="https://discordbots.org/bot/"> 
-       <img src="https://discordbots.org/api/widget/444950506234707978.svg?topcolor=D896FF&datacolor=823ed6&highlightcolor=D896FF&labelcolor=5d2f77&certifiedcolor=9c4cff"/>
-   </a>
