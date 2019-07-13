@@ -6,6 +6,12 @@ edition = "2018"
 
 [dependencies]
 log = "0.4"
+typemap = "0.3"
+
+[dependencies.reqwest]
+version = "0.9"
+default-features = false
+features = ["rustls-tls"]
 
 [dependencies.serenity]
 version = "0.6"

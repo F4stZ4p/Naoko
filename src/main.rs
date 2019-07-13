@@ -1,4 +1,5 @@
 mod commands;
+mod utils;
 
 use std::{
     collections::HashSet,
@@ -7,26 +8,31 @@ use std::{
 };
 
 use serenity::{
-    client::bridge::gateway::ShardManager,
     framework::{
         StandardFramework,
         standard::macros::group,
     },
-    model::{event::ResumedEvent, gateway::Ready, gateway::Activity, user::OnlineStatus},
     prelude::*,
+    model::{
+        event::ResumedEvent, 
+        gateway::Ready, 
+        gateway::Activity, 
+        user::OnlineStatus
+    },
 };
 
-use log::{error, info};
+use log::{
+    error, 
+    info,
+};
 
 use commands::{
     meta::*,
 };
 
-struct ShardManagerContainer;
-
-impl TypeMapKey for ShardManagerContainer {
-    type Value = Arc<Mutex<ShardManager>>;
-}
+use utils::{
+    clientkeys::*,
+};
 
 struct Handler;
 
@@ -35,7 +41,13 @@ impl EventHandler for Handler {
     fn ready(&self, context: Context, ready: Ready) {
 
         let activity = Activity::streaming(&"https://naoko-butt-is-me.ga | Rust Rewrite", "https://twitch.tv/404");
-        context.set_presence(Some(activity), OnlineStatus::DoNotDisturb);
+        
+        context.set_presence(
+            Some(
+                activity
+            ), 
+            OnlineStatus::DoNotDisturb
+        );
 
         info!("[INFO] Ready. Logged as in {}", ready.user.name);
 
@@ -66,9 +78,19 @@ fn main() {
 
     {
         let mut data = client.data.write();
+        
+        // Creating HTTP Client //
+        let reqw = reqwest::Client::new();
+
         data.insert::<ShardManagerContainer>(
             Arc::clone(
                 &client.shard_manager
+            )
+        );
+        
+        data.insert::<ReqwestClient>(
+            Arc::new(
+                reqw
             )
         );
     }
