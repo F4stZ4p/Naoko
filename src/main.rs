@@ -63,7 +63,7 @@ impl EventHandler for Handler {
 group!({
     name: "general",
     options: {},
-    commands: [ping]
+    commands: [ping, about]
 });
 
 fn main() {
