@@ -3,12 +3,14 @@ use serenity::{
     framework::standard::macros::command,
     model::prelude::*,
     prelude::*,
+    model::user::User,
     utils::Colour,
 };
 
 use std::{
     time::Instant,
 };
+
 
 #[command]
 #[description = "Want to know my latency?"]
@@ -17,14 +19,19 @@ fn ping(ctx: &mut Context, msg: &Message) -> CommandResult {
 
     let t = Instant::now();
 
-    let mut msg = msg.channel_id.say(&ctx, ":ping_pong: | Pinging...")?;
+    let mut msg = msg.channel_id.say(
+        &ctx, 
+        ":ping_pong: | Pinging..."
+    )?;
     let f = t.elapsed();
 
     msg.edit(&ctx, |msgs| {
-        msgs.content(&format!(
-            ":ping_pong: | Pong! It took **{}**ms",
-            f.as_millis()
-        ))
+        msgs.content(
+            &format!(
+                ":ping_pong: | Pong! It took **{}**ms to respond",
+                f.as_millis()
+            )
+        )
     })?;
 
     Ok(())
@@ -35,9 +42,15 @@ fn ping(ctx: &mut Context, msg: &Message) -> CommandResult {
 
 fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
 
+    let funsince = User::from(
+        &ctx.cache.read().user      
+    )
+    .created_at();
 
     let name = msg.author.name.clone();
     let avatar = msg.author.face();
+    
+    
     
     let t = Instant::now();
 
@@ -60,16 +73,28 @@ fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
                 ":bar_chart: Naoko Statistics"
             );
 
+            embed.timestamp(
+                &funsince
+            );
+
             embed.colour(
                 Colour::new(
                     0xA575FF
                 )
             );
 
-            embed.author(|mut author| {
-                author = author.name(name);
-                author = author.icon_url(avatar);
-                author
+            embed.footer(|footer| {
+                footer.text(
+                    "Bringing fun to Discord since"
+                );
+                footer.icon_url(
+                    "https://i.imgur.com/fYWEGhE.gif"
+                )
+            });
+
+            embed.author(|author| {
+                author.name(name);
+                author.icon_url(avatar)
             });
             
             embed.fields(

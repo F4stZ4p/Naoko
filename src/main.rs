@@ -31,7 +31,7 @@ use commands::{
 };
 
 use utils::{
-    clientkeys::*,
+    keys::*,
 };
 
 struct Handler;
@@ -40,7 +40,9 @@ impl EventHandler for Handler {
 
     fn ready(&self, context: Context, ready: Ready) {
 
-        let activity = Activity::streaming(&"https://naoko-butt-is-me.ga | Rust Rewrite", "https://twitch.tv/404");
+        let activity = Activity::streaming(
+            &"https://naoko-butt-is-me.ga | Rust Rewrite", "https://twitch.tv/404"
+        );
         
         context.set_presence(
             Some(
@@ -49,13 +51,18 @@ impl EventHandler for Handler {
             OnlineStatus::DoNotDisturb
         );
 
-        info!("[INFO] Ready. Logged as in {}", ready.user.name);
+        info!(
+            "[INFO] Ready. Logged as in {}", 
+            ready.user.name
+        );
 
     }
 
     fn resume(&self, _context: Context, _: ResumedEvent) {
 
-        info!("[INFO] Resumed");
+        info!(
+            "[INFO] Resumed"
+        );
 
     }
 }
@@ -78,21 +85,13 @@ fn main() {
 
     {
         let mut data = client.data.write();
-        
-        // Creating HTTP Client //
-        let reqw = reqwest::Client::new();
 
         data.insert::<ShardManagerContainer>(
             Arc::clone(
                 &client.shard_manager
             )
         );
-        
-        data.insert::<ReqwestClient>(
-            Arc::new(
-                reqw
-            )
-        );
+
     }
 
     let owners = match client.cache_and_http.http.get_current_application_info() {
@@ -120,6 +119,9 @@ fn main() {
         .group(&GENERAL_GROUP));
 
     if let Err(why) = client.start() {
-        error!("Client error: {:?}", why);
+        error!(
+            "[ERROR] Client error: {:?}", 
+            why
+        );
     }
 }
