@@ -7,7 +7,7 @@
     
    <p align="center">
 
-        <a href="https://discord.io/naoko">
+        <a href="https://discord.gg/FhVNM5N">
             <img src="https://img.shields.io/discord/574336850714689586.svg?label=Support%20Guild&colorB=A575FF"/>
         </a>
         <a href="https://patreon.com/F4stZ4p">
