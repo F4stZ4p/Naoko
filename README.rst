@@ -8,7 +8,7 @@
    <p align="center">
 
         <a href="https://discord.io/naoko">
-            <img src="https://img.shields.io/discord/443465258774822913.svg?label=Support%20Guild&colorB=D896FF"/>
+            <img src="https://img.shields.io/discord/574336850714689586.svg?label=Support%20Guild&colorB=A575FF"/>
         </a>
         <a href="https://patreon.com/F4stZ4p">
             <img src="https://img.shields.io/badge/Donate-on%20Patreon-F96854.svg"/>
@@ -17,7 +17,7 @@
     </p>
     <hr>
     <h4>What is Naoko?</h4>
-        <p>Naoko is a multifunctional Discord Bot made with discord.py@rewrite</p>
+        <p>Naoko is a multifunctional Discord Bot made with Serenity</p>
 
     <h4>What are Naoko features?</h4>
        <p> Naoko has a lot of them: </p>
