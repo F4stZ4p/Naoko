@@ -42,10 +42,9 @@ fn ping(ctx: &mut Context, msg: &Message) -> CommandResult {
 
 fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
 
-    let funsince = User::from(
+    let u = User::from(
         &ctx.cache.read().user      
-    )
-    .created_at();
+    );
 
     let name = msg.author.name.clone();
     let avatar = msg.author.face();
@@ -74,7 +73,7 @@ fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
             );
 
             embed.timestamp(
-                &funsince
+                &u.created_at()
             );
 
             embed.colour(
@@ -88,7 +87,7 @@ fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
                     "Bringing fun to Discord since"
                 );
                 footer.icon_url(
-                    "https://i.imgur.com/fYWEGhE.gif"
+                    &u.face()
                 )
             });
 
@@ -111,6 +110,42 @@ fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
                     (
                         "<:ferris:600338761624059923> **Powered by**",
                         "**Rust** and **Serenity**".to_string(),
+                        true,
+                    ),
+
+                    (
+                        ":video_game: **Guilds count**",
+                        format!(
+                            "**{}** guilds",
+                            ctx.cache.read().guilds.len(),
+                        ),
+                        true,
+                    ),
+
+                    (
+                        ":tropical_drink: **Users count**",
+                        format!(
+                            "**{}** users",
+                            ctx.cache.read().users.len(),
+                        ),
+                        true,
+                    ),
+
+                    (
+                        ":notepad_spiral: **Channel count**",
+                        format!(
+                            "**{}** channels",
+                            ctx.cache.read().channels.len(),
+                        ),
+                        true,
+                    ),
+
+                    (
+                        ":key: **Authorization**",
+                        format!(
+                            "**{}**",
+                            u.tag(),
+                        ),
                         true,
                     )
                 ]
