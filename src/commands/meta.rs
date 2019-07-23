@@ -76,6 +76,12 @@ fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
                 &u.created_at()
             );
 
+            embed.description(
+                "
+                **[Invite](https://discordapp.com/oauth2/authorize?client_id=585066031605612554&permissions=37080128&scope=bot)** | **[Donate](https://patreon.com/F4stZ4p)**
+                "
+            );
+
             embed.colour(
                 Colour::new(
                     0xA575FF

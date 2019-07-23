@@ -17,7 +17,8 @@ use serenity::{
         event::ResumedEvent, 
         gateway::Ready, 
         gateway::Activity, 
-        user::OnlineStatus
+        user::OnlineStatus,
+        id::UserId,
     },
 };
 
@@ -114,8 +115,25 @@ fn main() {
 
     client.with_framework(StandardFramework::new()
         .configure(|c| c
-            .owners(owners)
-            .prefix("n."))
+            
+            .owners(
+                owners
+            )
+            .prefix(
+                "n."
+            )
+            .on_mention(
+                Some(
+                    UserId(
+                        585066031605612554
+                    )
+                )
+            )
+            .case_insensitivity(
+                true
+            )
+        )
+
         .group(&GENERAL_GROUP));
 
     if let Err(why) = client.start() {
