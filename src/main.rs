@@ -4,7 +4,7 @@ mod utils;
 use std::{
     collections::HashSet,
     sync::Arc,
-    fs,
+    env,
 };
 
 use serenity::{
@@ -76,7 +76,7 @@ group!({
 
 fn main() {
 
-    let real_token = fs::read_to_string("config.ini").expect(
+    let real_token = env::var("TOKEN").expect(
         "[ERROR] Failed to obtain token"
     );
 
