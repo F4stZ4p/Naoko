@@ -77,9 +77,7 @@ fn about(ctx: &mut Context, msg: &Message) -> CommandResult {
             );
 
             embed.description(
-                "
-                **[Invite](https://discordapp.com/oauth2/authorize?client_id=585066031605612554&permissions=37080128&scope=bot)** | **[Donate](https://patreon.com/F4stZ4p)**
-                "
+                "**[Invite](https://discordapp.com/oauth2/authorize?client_id=585066031605612554&permissions=37080128&scope=bot)** | **[Donate](https://patreon.com/F4stZ4p)** | **[GitHub](https://github.com/NaokoDiscordBot/Naoko)**"
             );
 
             embed.colour(
