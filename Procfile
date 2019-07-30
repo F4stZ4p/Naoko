@@ -1,1 +1,1 @@
-web: ./target/release/NaokoRust
+worker: ./target/release/NaokoRust
