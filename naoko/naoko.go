@@ -10,8 +10,9 @@ type Naoko struct {
 }
 
 func (n *Naoko) Start(token string) (err error) {
-	// Creating new discord Session
+
 	n.session, err = discordgo.New("Bot " + token)
+
 	if err != nil {
 		return err
 	}
@@ -34,7 +35,9 @@ func (n *Naoko) Start(token string) (err error) {
 }
 
 func NewBot() *Naoko {
-	return &Naoko{}
+
+	return new(Naoko)
+
 }
 
 func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
