@@ -34,14 +34,16 @@ func (n *Naoko) Start(token string) (err error) {
 	return nil
 }
 
-func NewBot() *Naoko {
+func NewInstance() *Naoko {
 
 	return new(Naoko)
 
 }
 
 func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
+
 	if m.Content == "ping" {
 		s.ChannelMessageSend(m.ChannelID, "pong")
 	}
+
 }
