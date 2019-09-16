@@ -4,7 +4,7 @@ import "github.com/bwmarrin/discordgo"
 
 // Command represents a single command
 type Command struct {
-	// Quick descripiton
+	// Quick description
 	Usage string
 
 	// Full description
@@ -24,6 +24,7 @@ type Command struct {
 	// Categories []*Category
 }
 
+// Run is used to call command.
 func (c *Command) Run(session *discordgo.Session, message *discordgo.Message) (err error) {
 	return c.action(message)
 }
