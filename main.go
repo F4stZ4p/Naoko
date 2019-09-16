@@ -6,19 +6,14 @@ import (
 	"os"
 )
 
-var token string = os.Getenv("DISCORD_TOKEN")
+var token = os.Getenv("DISCORD_TOKEN")
 
 func main() {
 
-	bot := naoko.NewInstance()
+	bot := naoko.NewNaoko()
 	err := bot.Start(token)
 
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	// return &Naoko{
-	//    startTime: time.Now()
-	// }
-
 }
