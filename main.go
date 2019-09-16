@@ -10,6 +10,10 @@ var token = os.Getenv("DISCORD_TOKEN")
 
 func main() {
 
+	if token == "" {
+		log.Fatalln("DISCORD_TOKEN environment variable is not set")
+	}
+
 	bot := naoko.NewNaoko()
 	err := bot.Start(token)
 
