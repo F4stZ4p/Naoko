@@ -10,15 +10,20 @@ import (
 
 // Naoko holds global stuff
 type Naoko struct {
+
 	session *discordgo.Session
 	exitc   chan os.Signal
+	prefix string
+
 }
 
 // Start is used to connect Naoko to Discord
 func (n *Naoko) Start(token string) (err error) {
+
 	n.session, err = discordgo.New("Bot " + token)
+
 	if err != nil {
-		return errors.New("error creating Discord session: " + err.Error())
+		return errors.New("[ERROR] Error creating session: " + err.Error())
 	}
 
 	// Registering handlers
@@ -26,12 +31,13 @@ func (n *Naoko) Start(token string) (err error) {
 
 	// Connecting session to Discord
 	err = n.session.Open()
+
 	if err != nil {
 		return errors.New("error opening connection: " + err.Error())
 	}
+
 	defer n.session.Close()
 
-	// waiting for exit signal
 	signal.Notify(n.exitc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-n.exitc
 
@@ -39,9 +45,12 @@ func (n *Naoko) Start(token string) (err error) {
 }
 
 // NewNaoko returns Naoko struct
+
 func NewNaoko() *Naoko {
+
 	return &Naoko{
 		exitc: make(chan os.Signal, 1),
+		prefix: "n.",
 	}
 
 }
