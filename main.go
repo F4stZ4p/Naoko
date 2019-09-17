@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./naoko"
+	"github.com/NaokoDiscordBot/Naoko/naoko"
 	"log"
 	"os"
 )
