@@ -22,6 +22,6 @@ type Command interface {
 	// Categories []*Category
 }
 
-var startupCommands = []Command{
+var Commands = []Command{
 	&pingpong{},
 }
