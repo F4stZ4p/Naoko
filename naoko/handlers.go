@@ -14,6 +14,10 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	if !strings.HasPrefix(m.Content, naoko.prefix) {
+		return
+	}
+
 	content := strings.TrimLeft(strings.TrimSpace(m.Content), naoko.prefix)
 
 	args := strings.Split(content, " ")
