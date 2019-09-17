@@ -8,13 +8,14 @@ import (
 	"syscall"
 )
 
+var naoko *Naoko
+
 // Naoko holds global stuff
 type Naoko struct {
-
-	session *discordgo.Session
-	exitc   chan os.Signal
-	prefix string
-
+	commands []Command
+	session  *discordgo.Session
+	exitc    chan os.Signal
+	prefix   string
 }
 
 // Start is used to connect Naoko to Discord
@@ -23,11 +24,14 @@ func (n *Naoko) Start(token string) (err error) {
 	n.session, err = discordgo.New("Bot " + token)
 
 	if err != nil {
-		return errors.New("[ERROR] Error creating session: " + err.Error())
+		return errors.New("error creating session: " + err.Error())
 	}
+
+	naoko = n
 
 	// Registering handlers
 	n.session.AddHandler(messageCreateHandler)
+	n.session.AddHandler(onReady)
 
 	// Connecting session to Discord
 	err = n.session.Open()
@@ -45,12 +49,11 @@ func (n *Naoko) Start(token string) (err error) {
 }
 
 // NewNaoko returns Naoko struct
-
 func NewNaoko() *Naoko {
-
 	return &Naoko{
-		exitc: make(chan os.Signal, 1),
-		prefix: "n.",
+		exitc:    make(chan os.Signal, 1),
+		prefix:   "n.",
+		commands: startupCommands,
 	}
 
 }
