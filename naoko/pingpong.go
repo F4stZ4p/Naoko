@@ -3,7 +3,6 @@ package naoko
 import "github.com/bwmarrin/discordgo"
 
 type pingpong struct {
-	naoko *Naoko
 }
 
 func (pingpong) Usage() string {
