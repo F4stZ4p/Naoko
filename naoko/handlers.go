@@ -13,8 +13,9 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
-
-	if !strings.HasPrefix(m.Content, naoko.prefix) {
+    
+    // In DM, prefix is not needed
+	if m.GuildID != "" && !strings.HasPrefix(m.Content, naoko.prefix) {
 		return
 	}
 
