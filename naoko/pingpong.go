@@ -2,29 +2,28 @@ package naoko
 
 import "github.com/bwmarrin/discordgo"
 
-type pingpong struct {
+type PingCommand struct {}
+
+func (PingCommand) Usage() string {
+	return "Just pings the bot"
 }
 
-func (pingpong) Usage() string {
-	return "usage"
+func (PingCommand) Help() string {
+	return "n.ping"
 }
 
-func (pingpong) Help() string {
-	return "help"
-}
-
-func (pingpong) Aliases() []string {
+func (PingCommand) Aliases() []string {
 	return []string{
 		"ping",
 		"pong",
 	}
 }
 
-func (pingpong) OwnerOnly() bool {
-	return true
+func (PingCommand) OwnerOnly() bool {
+	return false
 }
 
-func (p *pingpong) Run(session *discordgo.Session, message *discordgo.Message) error {
-	_, err := session.ChannelMessageSend(message.ChannelID, "pong")
+func (p *PingCommand) Run(session *discordgo.Session, message *discordgo.Message) error {
+	_, err := session.ChannelMessageSend(message.ChannelID, ":ping_pong: | **Pong!**")
 	return err
 }

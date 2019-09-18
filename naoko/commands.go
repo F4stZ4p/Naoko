@@ -23,5 +23,5 @@ type Command interface {
 }
 
 var Commands = []Command{
-	&pingpong{},
+	&PingCommand{},
 }

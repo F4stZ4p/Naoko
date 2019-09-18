@@ -40,7 +40,7 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 // onReady is called when Naoko connects to Discord
 func onReady(s *discordgo.Session, ready *discordgo.Ready) {
-	fmt.Println("Naoko is started.")
+	fmt.Println("Naoko is running now")
 	fmt.Println(ready.User.String())
 	fmt.Println("ID: " + ready.User.ID)
 	fmt.Println("\t" + strings.Repeat("-", 30) + "\t")
