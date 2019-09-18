@@ -42,6 +42,6 @@ func onReady(s *discordgo.Session, ready *discordgo.Ready) {
 	fmt.Println("Naoko is started.")
 	fmt.Println(ready.User.String())
 	fmt.Println("ID: " + ready.User.ID)
-	fmt.Println("\t" + strings.Repeat("-", 50) + "\t")
+	fmt.Println("\t" + strings.Repeat("-", 30) + "\t")
 	return
 }
