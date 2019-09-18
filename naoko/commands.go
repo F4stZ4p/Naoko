@@ -22,6 +22,6 @@ type Command interface {
 	// Categories []*Category
 }
 
-var Commands = []Command{
+var commands = []Command{
 	&pingCommand{},
 }

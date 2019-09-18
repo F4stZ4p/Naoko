@@ -53,7 +53,7 @@ func NewNaoko() *Naoko {
 	return &Naoko{
 		exitc:    make(chan os.Signal, 1),
 		prefix:   "n.",
-		commands: Commands,
+		commands: commands,
 	}
 
 }
