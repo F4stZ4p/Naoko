@@ -14,15 +14,15 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	naoko.Lock()
+	defer naoko.Unlock()
+
 	// In DM, prefix is not needed
 	if m.GuildID != "" && !strings.HasPrefix(m.Content, naoko.prefix) {
 		return
 	}
 
 	content := strings.TrimLeft(strings.TrimSpace(m.Content), naoko.prefix)
-
-	naoko.Lock()
-	defer naoko.Unlock()
 	for _, c := range naoko.commands {
 		for _, alias := range c.Aliases() {
 			if strings.HasPrefix(content, alias) {
