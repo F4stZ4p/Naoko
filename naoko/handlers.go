@@ -21,13 +21,11 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	content := strings.TrimLeft(strings.TrimSpace(m.Content), naoko.prefix)
 
-	args := strings.Split(content, " ")
-
 	naoko.Lock()
 	defer naoko.Unlock()
 	for _, c := range naoko.commands {
 		for _, alias := range c.Aliases() {
-			if args[0] == alias {
+			if strings.HasPrefix(content, alias) {
 				err := c.Run(s, m.Message)
 				if err != nil {
 					log.Println(err)
