@@ -5,6 +5,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 )
 
@@ -12,9 +13,11 @@ var naoko *Naoko
 
 // Naoko holds global stuff
 type Naoko struct {
+	session *discordgo.Session
+	exitc   chan os.Signal
+
+	sync.Mutex
 	commands []Command
-	session  *discordgo.Session
-	exitc    chan os.Signal
 	prefix   string
 }
 
@@ -55,5 +58,4 @@ func NewNaoko() *Naoko {
 		prefix:   "n.",
 		commands: commands,
 	}
-
 }

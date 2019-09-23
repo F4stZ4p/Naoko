@@ -23,6 +23,8 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	args := strings.Split(content, " ")
 
+	naoko.Lock()
+	defer naoko.Unlock()
 	for _, c := range naoko.commands {
 		for _, alias := range c.Aliases() {
 			if args[0] == alias {
@@ -30,6 +32,7 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 				if err != nil {
 					log.Println(err)
 				}
+				return
 			}
 		}
 	}
