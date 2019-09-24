@@ -4,11 +4,10 @@ import "github.com/bwmarrin/discordgo"
 
 // Command represents a single command
 type Command interface {
-	// Quick description
-	Usage() string
 
-	// Full description
-	Help() string
+	// Both are formatters that returns complete usage with prefix, data, etc
+	Usage(prefix string) string // Quick description
+	Help() string               // Full description
 
 	// First alias is the main
 	Aliases() []string
@@ -24,4 +23,5 @@ type Command interface {
 
 var commands = []Command{
 	&pingCommand{},
+	&helpCommand{},
 }
