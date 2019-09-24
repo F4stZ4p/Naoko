@@ -4,12 +4,12 @@ import "github.com/bwmarrin/discordgo"
 
 type pingCommand struct{}
 
-func (pingCommand) Usage() string {
-	return "Just pings the bot"
+func (pc pingCommand) Usage(prefix string) string {
+	return "Usage: " + prefix + pc.Aliases()[0]
 }
 
 func (pingCommand) Help() string {
-	return "n.ping"
+	return "Just pings the bot"
 }
 
 func (pingCommand) Aliases() []string {
@@ -23,7 +23,7 @@ func (pingCommand) OwnerOnly() bool {
 	return false
 }
 
-func (p *pingCommand) Run(session *discordgo.Session, message *discordgo.Message) error {
+func (pc *pingCommand) Run(session *discordgo.Session, message *discordgo.Message) error {
 	_, err := session.ChannelMessageSend(message.ChannelID, ":ping_pong: | **Pong!**")
 	return err
 }
