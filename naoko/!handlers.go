@@ -15,6 +15,7 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	naoko.Lock()
+	// don't forget to unlock
 
 	// In DM, prefix is not needed
 	if m.GuildID != "" && !strings.HasPrefix(m.Content, naoko.prefix) {
