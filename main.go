@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/NaokoDiscordBot/Naoko/naoko"
 	"github.com/NaokoDiscordBot/Naoko/config"
+	"github.com/NaokoDiscordBot/Naoko/naoko"
 	"log"
 	"os"
 )
@@ -16,14 +16,12 @@ func main() {
 	if token == "" {
 		log.Fatalln("DISCORD_TOKEN environment variable is not set")
 	}
-	
+
 	var conf = &config.Config{
-	    Owners: []string{
-	        owner1,
-	    },
+		Owners: []string{
+			owner1,
+		},
 	}
-	
-	
 
 	bot := naoko.NewNaoko(conf)
 	err := bot.Start(token)

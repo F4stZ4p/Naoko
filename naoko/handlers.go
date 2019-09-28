@@ -17,6 +17,13 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	naoko.Lock()
 	// don't forget to unlock
 
+	var isOwner = false
+	for _, ownerID := range naoko.config.Owners {
+		if ownerID == m.Author.ID {
+			isOwner = true
+		}
+	}
+
 	// In DM, prefix is not needed
 	if m.GuildID != "" && !strings.HasPrefix(m.Content, naoko.prefix) {
 		return
@@ -24,6 +31,10 @@ func messageCreateHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	content := strings.TrimLeft(strings.TrimSpace(m.Content), naoko.prefix)
 	for _, c := range naoko.commands {
+		if c.OwnerOnly() && !isOwner{
+			continue
+		}
+
 		for _, alias := range c.Aliases() {
 			if strings.HasPrefix(content, alias) {
 				naoko.Unlock()

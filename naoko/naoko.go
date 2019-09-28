@@ -2,12 +2,12 @@ package naoko
 
 import (
 	"errors"
+	"github.com/NaokoDiscordBot/Naoko/config"
 	"github.com/bwmarrin/discordgo"
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
-	"github.com/NaokoDiscordBot/Naoko/config"
 )
 
 var naoko *Naoko
@@ -20,7 +20,7 @@ type Naoko struct {
 	sync.Mutex
 	commands []Command
 	prefix   string
-	config *config.Config
+	config   *config.Config
 }
 
 // Start is used to connect Naoko to Discord
@@ -59,6 +59,6 @@ func NewNaoko(conf *config.Config) *Naoko {
 		exitc:    make(chan os.Signal, 1),
 		prefix:   "n.",
 		commands: commands,
-		config: conf,
+		config:   conf,
 	}
 }
