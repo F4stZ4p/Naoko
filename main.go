@@ -17,7 +17,7 @@ func main() {
 		log.Fatalln("DISCORD_TOKEN environment variable is not set")
 	}
 	
-	var conv = &config.Config{
+	var conf = &config.Config{
 	    Owners: []string{
 	        owner1,
 	    },

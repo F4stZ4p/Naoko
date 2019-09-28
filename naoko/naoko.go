@@ -59,6 +59,6 @@ func NewNaoko(conf *config.Config) *Naoko {
 		exitc:    make(chan os.Signal, 1),
 		prefix:   "n.",
 		commands: commands,
-		config: *conf,
+		config: conf,
 	}
 }
