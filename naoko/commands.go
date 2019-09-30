@@ -24,4 +24,5 @@ type Command interface {
 var commands = []Command{
 	&pingCommand{},
 	&helpCommand{},
+	&testOwnerCommand{},
 }
